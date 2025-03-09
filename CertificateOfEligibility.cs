@@ -44,7 +44,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void label32_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine("skjhs");
         }
     }
 }
