@@ -634,6 +634,7 @@
             // rBtnMale
             // 
             rBtnMale.AutoSize = true;
+            rBtnMale.Checked = true;
             rBtnMale.Font = new Font("Verdana", 9F);
             rBtnMale.Location = new Point(20, 9);
             rBtnMale.Name = "rBtnMale";
@@ -655,7 +656,6 @@
             rBtnFemale.Name = "rBtnFemale";
             rBtnFemale.Size = new Size(83, 22);
             rBtnFemale.TabIndex = 229;
-            rBtnFemale.TabStop = true;
             rBtnFemale.Text = "Female";
             rBtnFemale.UseVisualStyleBackColor = true;
             // 
@@ -850,6 +850,7 @@
             txtRelationship.Name = "txtRelationship";
             txtRelationship.Size = new Size(145, 28);
             txtRelationship.TabIndex = 197;
+            txtRelationship.Text = "GGGGGG";
             // 
             // label10
             // 
@@ -959,6 +960,7 @@
             txtMidName.Name = "txtMidName";
             txtMidName.Size = new Size(239, 28);
             txtMidName.TabIndex = 150;
+            txtMidName.Text = "GGGGGGG";
             // 
             // label51
             // 
@@ -982,6 +984,7 @@
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(210, 28);
             txtFirstName.TabIndex = 148;
+            txtFirstName.Text = "GGGGGGGG";
             // 
             // label52
             // 
@@ -1006,6 +1009,7 @@
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(216, 28);
             txtLastName.TabIndex = 146;
+            txtLastName.Text = "GGGG";
             // 
             // label53
             // 
@@ -1089,6 +1093,7 @@
             txtBirthPlace.Name = "txtBirthPlace";
             txtBirthPlace.Size = new Size(509, 28);
             txtBirthPlace.TabIndex = 172;
+            txtBirthPlace.Text = "GGGGGGGG";
             // 
             // label11
             // 
@@ -1625,6 +1630,7 @@
             // rBtnbMale
             // 
             rBtnbMale.AutoSize = true;
+            rBtnbMale.Checked = true;
             rBtnbMale.Font = new Font("Verdana", 9F);
             rBtnbMale.Location = new Point(7, 3);
             rBtnbMale.Name = "rBtnbMale";
@@ -1642,7 +1648,6 @@
             rBtnbFemale.Name = "rBtnbFemale";
             rBtnbFemale.Size = new Size(83, 22);
             rBtnbFemale.TabIndex = 245;
-            rBtnbFemale.TabStop = true;
             rBtnbFemale.Text = "Female";
             rBtnbFemale.UseVisualStyleBackColor = true;
             // 
@@ -1825,6 +1830,7 @@
             txtbExtJrSr.Name = "txtbExtJrSr";
             txtbExtJrSr.Size = new Size(104, 28);
             txtbExtJrSr.TabIndex = 152;
+            txtbExtJrSr.Text = "GG";
             // 
             // label39
             // 
@@ -1846,6 +1852,7 @@
             txtbMidName.Name = "txtbMidName";
             txtbMidName.Size = new Size(239, 28);
             txtbMidName.TabIndex = 150;
+            txtbMidName.Text = "GGGGGG";
             // 
             // label41
             // 
@@ -1869,6 +1876,7 @@
             txtbFirstName.Name = "txtbFirstName";
             txtbFirstName.Size = new Size(210, 28);
             txtbFirstName.TabIndex = 148;
+            txtbFirstName.Text = "GGGGGGGG";
             // 
             // label42
             // 
@@ -1892,6 +1900,7 @@
             txtbLastName.Name = "txtbLastName";
             txtbLastName.Size = new Size(216, 28);
             txtbLastName.TabIndex = 146;
+            txtbLastName.Text = "GGGGGGGGG";
             // 
             // label43
             // 
@@ -1953,6 +1962,7 @@
             txtbBirthPlace.Name = "txtbBirthPlace";
             txtbBirthPlace.Size = new Size(392, 28);
             txtbBirthPlace.TabIndex = 172;
+            txtbBirthPlace.Text = "GGGGGG";
             // 
             // label47
             // 
@@ -2187,6 +2197,7 @@
             txtfRelationship.Name = "txtfRelationship";
             txtfRelationship.Size = new Size(306, 28);
             txtfRelationship.TabIndex = 225;
+            txtfRelationship.Text = "455";
             // 
             // label19
             // 
@@ -2232,6 +2243,7 @@
             txtfAge.ReadOnly = true;
             txtfAge.Size = new Size(50, 28);
             txtfAge.TabIndex = 226;
+            txtfAge.Text = "0";
             // 
             // label4
             // 
@@ -2254,6 +2266,7 @@
             txtfFirstName.Name = "txtfFirstName";
             txtfFirstName.Size = new Size(275, 28);
             txtfFirstName.TabIndex = 228;
+            txtfFirstName.Text = "GGGG";
             // 
             // label3
             // 
@@ -2276,6 +2289,7 @@
             txtfLastName.Name = "txtfLastName";
             txtfLastName.Size = new Size(275, 28);
             txtfLastName.TabIndex = 226;
+            txtfLastName.Text = "GGGG";
             // 
             // label2
             // 
@@ -2358,6 +2372,7 @@
             // rBtnfMale
             // 
             rBtnfMale.AutoSize = true;
+            rBtnfMale.Checked = true;
             rBtnfMale.Font = new Font("Verdana", 9F);
             rBtnfMale.Location = new Point(6, 7);
             rBtnfMale.Name = "rBtnfMale";
@@ -2375,7 +2390,6 @@
             rBtnfFemale.Name = "rBtnfFemale";
             rBtnfFemale.Size = new Size(83, 22);
             rBtnfFemale.TabIndex = 231;
-            rBtnfFemale.TabStop = true;
             rBtnfFemale.Text = "Female";
             rBtnfFemale.UseVisualStyleBackColor = true;
             // 

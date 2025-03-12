@@ -46,5 +46,10 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             Console.WriteLine("skjhs");
         }
+
+        private void CertificateOfEligibility_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

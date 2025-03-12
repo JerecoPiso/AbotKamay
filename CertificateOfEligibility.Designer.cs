@@ -32,6 +32,9 @@
             label1 = new Label();
             label2 = new Label();
             panel1 = new Panel();
+            checkBox28 = new CheckBox();
+            checkBox29 = new CheckBox();
+            checkBox27 = new CheckBox();
             label38 = new Label();
             label32 = new Label();
             label33 = new Label();
@@ -95,9 +98,6 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            checkBox27 = new CheckBox();
-            checkBox28 = new CheckBox();
-            checkBox29 = new CheckBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -196,6 +196,42 @@
             panel1.Size = new Size(1022, 1151);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // checkBox28
+            // 
+            checkBox28.AutoSize = true;
+            checkBox28.Font = new Font("Segoe UI", 7.20000029F);
+            checkBox28.Location = new Point(877, 156);
+            checkBox28.Name = "checkBox28";
+            checkBox28.Size = new Size(71, 21);
+            checkBox28.TabIndex = 94;
+            checkBox28.Text = "Female";
+            checkBox28.TextAlign = ContentAlignment.BottomCenter;
+            checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // checkBox29
+            // 
+            checkBox29.AutoSize = true;
+            checkBox29.Font = new Font("Segoe UI", 7.20000029F);
+            checkBox29.Location = new Point(807, 156);
+            checkBox29.Name = "checkBox29";
+            checkBox29.Size = new Size(59, 21);
+            checkBox29.TabIndex = 93;
+            checkBox29.Text = "Male";
+            checkBox29.TextAlign = ContentAlignment.BottomCenter;
+            checkBox29.UseVisualStyleBackColor = true;
+            // 
+            // checkBox27
+            // 
+            checkBox27.AutoSize = true;
+            checkBox27.Font = new Font("Segoe UI", 7.20000029F);
+            checkBox27.Location = new Point(826, 344);
+            checkBox27.Name = "checkBox27";
+            checkBox27.Size = new Size(106, 21);
+            checkBox27.TabIndex = 92;
+            checkBox27.Text = "Police Blotter";
+            checkBox27.TextAlign = ContentAlignment.BottomCenter;
+            checkBox27.UseVisualStyleBackColor = true;
             // 
             // label38
             // 
@@ -844,42 +880,6 @@
             label3.TabIndex = 3;
             label3.Text = "Province of Sorsogon";
             // 
-            // checkBox27
-            // 
-            checkBox27.AutoSize = true;
-            checkBox27.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox27.Location = new Point(826, 344);
-            checkBox27.Name = "checkBox27";
-            checkBox27.Size = new Size(106, 21);
-            checkBox27.TabIndex = 92;
-            checkBox27.Text = "Police Blotter";
-            checkBox27.TextAlign = ContentAlignment.BottomCenter;
-            checkBox27.UseVisualStyleBackColor = true;
-            // 
-            // checkBox28
-            // 
-            checkBox28.AutoSize = true;
-            checkBox28.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox28.Location = new Point(877, 156);
-            checkBox28.Name = "checkBox28";
-            checkBox28.Size = new Size(71, 21);
-            checkBox28.TabIndex = 94;
-            checkBox28.Text = "Female";
-            checkBox28.TextAlign = ContentAlignment.BottomCenter;
-            checkBox28.UseVisualStyleBackColor = true;
-            // 
-            // checkBox29
-            // 
-            checkBox29.AutoSize = true;
-            checkBox29.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox29.Location = new Point(807, 156);
-            checkBox29.Name = "checkBox29";
-            checkBox29.Size = new Size(59, 21);
-            checkBox29.TabIndex = 93;
-            checkBox29.Text = "Male";
-            checkBox29.TextAlign = ContentAlignment.BottomCenter;
-            checkBox29.UseVisualStyleBackColor = true;
-            // 
             // CertificateOfEligibility
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -888,6 +888,7 @@
             Controls.Add(panel1);
             Name = "CertificateOfEligibility";
             Text = "CertificateOfEligibility";
+            Load += CertificateOfEligibility_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

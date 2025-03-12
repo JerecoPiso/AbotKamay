@@ -382,6 +382,7 @@
             button5.TabIndex = 248;
             button5.Text = "   PRINT";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // txtAmount
             // 

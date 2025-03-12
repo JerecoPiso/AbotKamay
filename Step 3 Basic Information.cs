@@ -825,8 +825,9 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 if (result == DialogResult.Yes)
                 {
                     int selectedIndex = dgFamily.SelectedRows[0].Index;
-
+                    dgFamily.Update();
                     familyCompositionTable.Rows.RemoveAt(selectedIndex);
+                    familyMemberList.RemoveAt(selectedIndex);
                     UpdateRowNumbers(); // Update numbering after deletion
 
                     MessageBox.Show("Family member deleted from the list.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -961,38 +962,62 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private int SaveBeneficiaryInformation(MySqlConnection conn, MySqlTransaction transaction, bool isSelf)
         {
-            string query = "";
-            if (isSelf)
-            {
-                query = @"
-    INSERT INTO BeneficiaryInformation (
-        client_id, last_name, first_name, middle_name, ext_name, sex, date_of_birth, age, 
-        birth_place, region, province, city_municipality, district, barangay, street_purok, 
-        contact_number, civil_status, civil_status_other
-    ) VALUES (
-        @clientId, @lastName, @firstName, @middleName, @extName, @sex, @dateOfBirth, @age, 
-        @birthPlace, @region, @province, @cityMunicipality, @district, @barangay, @streetPurok, 
-        @contactNumber, @civilStatus, @civilStatusOther
-    )";
-            }
-            else
-            {
-                query = @"
-    INSERT INTO BeneficiaryInformation (
-        client_id
-    ) VALUES (
-        @clientId
-    )";
-            }
+            //string query = "";
+            //if (isSelf)
+            //{
+            string query = @"
+            INSERT INTO BeneficiaryInformation (
+                client_id, beneficiary_type, other_beneficiary_type, youth_senior, last_name, first_name, middle_name, ext_name, sex, date_of_birth, age, 
+                birth_place, region, province, city_municipality, district, barangay, street_purok, 
+                contact_number, civil_status, civil_status_other
+            ) VALUES (
+                @clientId, @beneficiaryType, @beneficiaryTypeOther, @youthSenior, @lastName, @firstName, @middleName, @extName, @sex, @dateOfBirth, @age, 
+                @birthPlace, @region, @province, @cityMunicipality, @district, @barangay, @streetPurok, 
+                @contactNumber, @civilStatus, @civilStatusOther
+            )";
+            //        }
+            //        else
+            //        {
+            //            query = @"
+            //INSERT INTO BeneficiaryInformation (
+            //    client_id
+            //) VALUES (
+            //    @clientId
+            //)";
+            //SET('Youth', 'Fhona', 'SeniorCitizen', 'SoloParent', 'Pwd', '4ps', 'Other')
+            //        }
 
 
             using (var cmd = new MySqlCommand(query, conn, transaction))
             {
-                cmd.Parameters.AddWithValue("@clientId", currentClientId);
-
-                if (isSelf)
+                var beneficiaryType = "";
+                if (chkFhona.Checked)
                 {
-                    cmd.Parameters.AddWithValue("@lastName", txtLastName.Text);
+                    beneficiaryType = chkFhona.Text;
+                }else if (chkSoloParent.Checked)
+                {
+                    beneficiaryType = chkSoloParent.Text;
+                }
+                else if (chkPwd.Checked)
+                {
+                    beneficiaryType = chkPwd.Text;
+                }
+                else if (chk4ps.Checked)
+                {
+                    beneficiaryType = chk4ps.Text;
+                }
+                else if (chkbOther.Checked)
+                {
+                    beneficiaryType = chkbOther.Text;
+                }
+                cmd.Parameters.AddWithValue("@clientId", currentClientId);
+                cmd.Parameters.AddWithValue("@beneficiaryType", beneficiaryType);
+                cmd.Parameters.AddWithValue("@beneficiaryTypeOther", txtbOther.Text);
+                cmd.Parameters.AddWithValue("@youthSenior", rBtnYouth.Checked ? rBtnYouth.Text : rBtnSeniorCitizen.Text);
+
+                //if (isSelf)
+                //{
+                cmd.Parameters.AddWithValue("@lastName", txtLastName.Text);
                     cmd.Parameters.AddWithValue("@firstName", txtFirstName.Text);
                     cmd.Parameters.AddWithValue("@middleName", txtMidName.Text);
                     cmd.Parameters.AddWithValue("@extName", txtExtJrSr.Text);
@@ -1009,7 +1034,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     cmd.Parameters.AddWithValue("@contactNumber", txtContact.Text);
                     cmd.Parameters.AddWithValue("@civilStatus", rBtnSingle.Checked ? "Single" : rBtnMarried.Checked ? "Married" : "Other");
                     cmd.Parameters.AddWithValue("@civilStatusOther", DBNull.Value);
-                }
+                //}
 
                 cmd.ExecuteNonQuery();
 
@@ -1035,10 +1060,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             )";
 
             using (var cmd = new MySqlCommand(query, conn, transaction))
-            {
+            {   
+
                 foreach (var familyRow in familyMemberList)
                 {
-                    cmd.Parameters.Clear();
+                    //cmd.Parameters.Clear();
 
                     cmd.Parameters.AddWithValue("@beneficiaryId", currentBeneficiaryId);
                     cmd.Parameters.AddWithValue("@lastName", familyRow["Last Name"]);
@@ -1448,8 +1474,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     newRow["Relationship"] = txtfRelationship.Text;
 
                     // Set the Occupation and Income Range only if they have valid values, otherwise leave them empty
-                    newRow["Occupation"] = string.IsNullOrWhiteSpace(cmbfOccupation.Text) || cmbfOccupation.SelectedIndex == 0 ? string.Empty : cmbfOccupation.Text;
-                    newRow["Estimated Income"] = string.IsNullOrWhiteSpace(cmbfIncomeRange.Text) || cmbfIncomeRange.SelectedIndex == 0 ? string.Empty : cmbfIncomeRange.Text;
+                    newRow["Occupation"] = string.IsNullOrWhiteSpace(cmbfOccupation.Text) || cmbfOccupation.SelectedIndex == 0 ? string.Empty : cmbfOccupation.SelectedIndex;
+                    newRow["Estimated Income"] = string.IsNullOrWhiteSpace(cmbfIncomeRange.Text) || cmbfIncomeRange.SelectedIndex == 0 ? string.Empty : cmbfIncomeRange.SelectedIndex;
 
                     newRow["Civil Status"] = rBtnfSingle.Checked ? "Single" : rBtnfMarried.Checked ? "Married" : txtfStatusOther.Text;
 
@@ -1457,7 +1483,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     familyCompositionTable.Rows.Add(newRow);
 
                     UpdateRowNumbers(); // Update numbering after adding
-
+                    familyMemberList.Add(newRow);
                     ClearFamilyCompositionInputs(); // Clear input fields after adding
                     MessageBox.Show("Family member added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

@@ -905,8 +905,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PrintGeneralntakeSheet printForm = new PrintGeneralntakeSheet(this); // 'this' is MainForm
-            printForm.Show();
+            //PrintGeneralntakeSheet printForm = new PrintGeneralntakeSheet(this);
+            //printForm.Show();
         }
     }
 }

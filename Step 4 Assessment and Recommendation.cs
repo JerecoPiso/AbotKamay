@@ -20,7 +20,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         public bool IsClient { get; set; } // Public property to differentiate between client and beneficiary
 
         private string role;
-        private int? clientId;
+        public int? clientId;
         private string fullName;
 
         public Step4Form(string userRole, int? clientId = null, string fullName = null)
@@ -328,6 +328,13 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void btnNextToReco_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = tabPage2;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            PrintGeneralntakeSheet printForm = new PrintGeneralntakeSheet(this);
+            //CertificateOfEligibility printForm = new CertificateOfEligibility();
+            printForm.Show();
         }
     }
 }
