@@ -43,7 +43,6 @@
             dgBenef = new DataGridView();
             pictureBox2 = new PictureBox();
             txtSearch = new TextBox();
-            button1 = new Button();
             mainPanel.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgClient).BeginInit();
@@ -55,7 +54,6 @@
             // 
             mainPanel.BackColor = Color.FromArgb(206, 206, 206);
             mainPanel.BackgroundImage = (Image)resources.GetObject("mainPanel.BackgroundImage");
-            mainPanel.Controls.Add(button1);
             mainPanel.Controls.Add(flowLayoutPanel1);
             mainPanel.Controls.Add(lblClient);
             mainPanel.Controls.Add(lblBenef);
@@ -148,6 +146,7 @@
             dgClient.AllowUserToDeleteRows = false;
             dgClient.AllowUserToResizeColumns = false;
             dgClient.AllowUserToResizeRows = false;
+            dgClient.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgClient.BorderStyle = BorderStyle.Fixed3D;
             dgClient.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -187,6 +186,7 @@
             dgBenef.AllowUserToDeleteRows = false;
             dgBenef.AllowUserToResizeColumns = false;
             dgBenef.AllowUserToResizeRows = false;
+            dgBenef.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgBenef.BorderStyle = BorderStyle.Fixed3D;
             dgBenef.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -241,16 +241,6 @@
             txtSearch.TabIndex = 20;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
-            // button1
-            // 
-            button1.Location = new Point(1120, 15);
-            button1.Name = "button1";
-            button1.Size = new Size(283, 52);
-            button1.TabIndex = 257;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // HomeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -282,6 +272,5 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button btnRefresh;
         public Button btnAddNew;
-        private Button button1;
     }
 }

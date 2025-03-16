@@ -20,24 +20,12 @@ using Region = Abot_Kamay_Tracking_and_Queuing_System.Models.GeographicalRegion;
 
 
 namespace Abot_Kamay_Tracking_and_Queuing_System
+
 {
-    //public class UnselectableRadioButton : RadioButton
-    //{
-    //    protected override void OnClick(EventArgs e)
-    //    {
-    //        if (this.Checked)
-    //        {
-    //            this.Checked = false;
-    //        }
-    //        else
-    //        {
-    //            base.OnClick(e);
-    //        }
-    //    }
-    //}
     public partial class Step3Form : Form
-    {   
-       // private UnselectableRadioButton 
+    {
+
+        // private UnselectableRadioButton 
         private int currentClientId;
         private int currentBeneficiaryId;
 
@@ -65,10 +53,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 lblGetName.Visible = false;
             }
 
-                // Subscribe to the TextChanged event for all TextBox controls
-                SubscribeToTextChanged(this);
+            // Subscribe to the TextChanged event for all TextBox controls
+            SubscribeToTextChanged(this);
 
             // Other initialization code...
+          
             LoadAllComboBoxes();
 
             //KeyPress event for contact and PhilHealth textboxes
@@ -83,23 +72,28 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
             chkSelf.CheckedChanged += chkSelf_CheckedChanged;
 
-            dataLoader = new AddressDataLoader();
-            dataLoader.LoadData();
+            if (!clientId.HasValue)
+            {
+                dataLoader = new AddressDataLoader();
+                dataLoader.LoadData();
 
 
-            // Populate regions for Tab1 and Tab2
-            PopulateRegions(cmbRegion);
-            PopulateRegions(cmbbRegion);
+                // Populate regions for Tab1 and Tab2
+                PopulateRegions(cmbRegion);
+                PopulateRegions(cmbbRegion);
 
-            // Wire up event handlers for Tab1
-            cmbRegion.SelectedIndexChanged += cmbRegion_SelectedIndexChanged;
-            cmbProvince.SelectedIndexChanged += cmbProvince_SelectedIndexChanged;
-            cmbCity.SelectedIndexChanged += cmbCity_SelectedIndexChanged;
+                // Wire up event handlers for Tab1
+                cmbRegion.SelectedIndexChanged += cmbRegion_SelectedIndexChanged;
+                cmbProvince.SelectedIndexChanged += cmbProvince_SelectedIndexChanged;
+                cmbCity.SelectedIndexChanged += cmbCity_SelectedIndexChanged;
 
-            // Wire up event handlers for Tab2
-            cmbbRegion.SelectedIndexChanged += cmbbRegion_SelectedIndexChanged;
-            cmbbProvince.SelectedIndexChanged += cmbbProvince_SelectedIndexChanged;
-            cmbbCity.SelectedIndexChanged += cmbbCity_SelectedIndexChanged;
+                // Wire up event handlers for Tab2
+                cmbbRegion.SelectedIndexChanged += cmbbRegion_SelectedIndexChanged;
+                cmbbProvince.SelectedIndexChanged += cmbbProvince_SelectedIndexChanged;
+                cmbbCity.SelectedIndexChanged += cmbbCity_SelectedIndexChanged;
+            }
+
+         
         }
 
         private void LoadClientData(int clientId)
@@ -513,7 +507,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             if (chkSelf.Checked)
             {
                 // groupBox1.Enabled = false;
-              
+
                 txtbFirstName.Enabled = false;
                 txtbMidName.Enabled = false;
                 txtbLastName.Enabled = false;
@@ -846,6 +840,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void btnStep3Save_Click(object sender, EventArgs e)
         {
 
+
             // Confirm save action
             var confirmSave = MessageBox.Show("Are you sure you want to save all the entered data?",
                                               "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -884,6 +879,9 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                             // ✅ Commit all changes
                             transaction.Commit();
                             MessageBox.Show("Data saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MainForm main = (MainForm)Application.OpenForms["MainForm"];
+                            main.btnHome.PerformClick();
+
                         }
                         catch (Exception ex)
                         {
@@ -955,11 +953,6 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 return Convert.ToInt32(result);
             }
         }
-
-
-
-
-
         private int SaveBeneficiaryInformation(MySqlConnection conn, MySqlTransaction transaction, bool isSelf)
         {
             //string query = "";
@@ -994,7 +987,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 if (chkFhona.Checked)
                 {
                     beneficiaryType = chkFhona.Text;
-                }else if (chkSoloParent.Checked)
+                }
+                else if (chkSoloParent.Checked)
                 {
                     beneficiaryType = chkSoloParent.Text;
                 }
@@ -1018,22 +1012,22 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 //if (isSelf)
                 //{
                 cmd.Parameters.AddWithValue("@lastName", txtLastName.Text);
-                    cmd.Parameters.AddWithValue("@firstName", txtFirstName.Text);
-                    cmd.Parameters.AddWithValue("@middleName", txtMidName.Text);
-                    cmd.Parameters.AddWithValue("@extName", txtExtJrSr.Text);
-                    cmd.Parameters.AddWithValue("@sex", rBtnMale.Checked ? "Male" : "Female");
-                    cmd.Parameters.AddWithValue("@dateOfBirth", dateTimePickerBirth.Value);
-                    cmd.Parameters.AddWithValue("@age", txtAge.Text);
-                    cmd.Parameters.AddWithValue("@birthPlace", txtBirthPlace.Text);
-                    cmd.Parameters.AddWithValue("@region", cmbRegion.Text);
-                    cmd.Parameters.AddWithValue("@province", cmbProvince.Text);
-                    cmd.Parameters.AddWithValue("@cityMunicipality", cmbCity.Text);
-                    cmd.Parameters.AddWithValue("@district", txtDistrict.Text);
-                    cmd.Parameters.AddWithValue("@barangay", cmbBarangay.Text);
-                    cmd.Parameters.AddWithValue("@streetPurok", txtStPurok.Text);
-                    cmd.Parameters.AddWithValue("@contactNumber", txtContact.Text);
-                    cmd.Parameters.AddWithValue("@civilStatus", rBtnSingle.Checked ? "Single" : rBtnMarried.Checked ? "Married" : "Other");
-                    cmd.Parameters.AddWithValue("@civilStatusOther", DBNull.Value);
+                cmd.Parameters.AddWithValue("@firstName", txtFirstName.Text);
+                cmd.Parameters.AddWithValue("@middleName", txtMidName.Text);
+                cmd.Parameters.AddWithValue("@extName", txtExtJrSr.Text);
+                cmd.Parameters.AddWithValue("@sex", rBtnMale.Checked ? "Male" : "Female");
+                cmd.Parameters.AddWithValue("@dateOfBirth", dateTimePickerBirth.Value);
+                cmd.Parameters.AddWithValue("@age", txtAge.Text);
+                cmd.Parameters.AddWithValue("@birthPlace", txtBirthPlace.Text);
+                cmd.Parameters.AddWithValue("@region", cmbRegion.Text);
+                cmd.Parameters.AddWithValue("@province", cmbProvince.Text);
+                cmd.Parameters.AddWithValue("@cityMunicipality", cmbCity.Text);
+                cmd.Parameters.AddWithValue("@district", txtDistrict.Text);
+                cmd.Parameters.AddWithValue("@barangay", cmbBarangay.Text);
+                cmd.Parameters.AddWithValue("@streetPurok", txtStPurok.Text);
+                cmd.Parameters.AddWithValue("@contactNumber", txtContact.Text);
+                cmd.Parameters.AddWithValue("@civilStatus", rBtnSingle.Checked ? "Single" : rBtnMarried.Checked ? "Married" : "Other");
+                cmd.Parameters.AddWithValue("@civilStatusOther", DBNull.Value);
                 //}
 
                 cmd.ExecuteNonQuery();
@@ -1060,7 +1054,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             )";
 
             using (var cmd = new MySqlCommand(query, conn, transaction))
-            {   
+            {
 
                 foreach (var familyRow in familyMemberList)
                 {
@@ -1606,7 +1600,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void rBtnMale_MouseClick(object sender, MouseEventArgs e)
         {
-         //   MessageBox.Show(rBtnMale.Checked.ToString());
+            //   MessageBox.Show(rBtnMale.Checked.ToString());
         }
 
         private void rBtnMale_MouseDown(object sender, MouseEventArgs e)
@@ -1624,6 +1618,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void rBtnMale_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //mainPanel.Visible = false;
+            MainForm main = (MainForm)Application.OpenForms["MainForm"];
+            main.btnHome.PerformClick();
+            
         }
     }
 }

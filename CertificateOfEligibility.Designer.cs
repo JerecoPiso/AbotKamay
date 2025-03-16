@@ -28,18 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CertificateOfEligibility));
             label1 = new Label();
             label2 = new Label();
+            form = new Panel();
+            panel18 = new Panel();
+            panel17 = new Panel();
+            panel16 = new Panel();
+            panel15 = new Panel();
+            label42 = new Label();
+            panel14 = new Panel();
+            panel13 = new Panel();
+            panel12 = new Panel();
+            label41 = new Label();
+            label40 = new Label();
+            panel11 = new Panel();
+            panel10 = new Panel();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            label39 = new Label();
+            panel6 = new Panel();
+            label24 = new Label();
+            panel5 = new Panel();
+            label21 = new Label();
+            panel4 = new Panel();
+            panel3 = new Panel();
+            panel2 = new Panel();
             panel1 = new Panel();
-            checkBox28 = new CheckBox();
-            checkBox29 = new CheckBox();
+            age = new Label();
+            address = new Label();
+            amountFig1 = new Label();
+            assistance2 = new Label();
+            specifyAssistance = new Label();
+            assistance1 = new Label();
+            fullname = new Label();
+            ps = new CheckBox();
+            amountFig2 = new Label();
+            assistance3 = new Label();
+            amount2 = new Label();
+            pgadh = new TextBox();
+            governor = new TextBox();
+            address2 = new Label();
+            payableTo = new Label();
+            currentDate = new Label();
+            clientName = new Label();
+            btnPrint = new Button();
+            chkFemale = new CheckBox();
+            chkMale = new CheckBox();
             checkBox27 = new CheckBox();
             label38 = new Label();
-            label32 = new Label();
             label33 = new Label();
             label34 = new Label();
-            label35 = new Label();
             label36 = new Label();
             label37 = new Label();
             label31 = new Label();
@@ -47,26 +86,22 @@
             label29 = new Label();
             label28 = new Label();
             label27 = new Label();
-            label24 = new Label();
             label25 = new Label();
             label23 = new Label();
-            label21 = new Label();
             label22 = new Label();
             label20 = new Label();
             label19 = new Label();
-            label17 = new Label();
             label18 = new Label();
-            label16 = new Label();
             label15 = new Label();
             label14 = new Label();
             label26 = new Label();
-            textBox19 = new TextBox();
-            checkBox21 = new CheckBox();
-            checkBox22 = new CheckBox();
-            checkBox23 = new CheckBox();
-            checkBox24 = new CheckBox();
-            checkBox25 = new CheckBox();
-            checkBox26 = new CheckBox();
+            othersSpecify = new TextBox();
+            chkOthers = new CheckBox();
+            pwd = new CheckBox();
+            solo = new CheckBox();
+            senior = new CheckBox();
+            fhona = new CheckBox();
+            youth = new CheckBox();
             label13 = new Label();
             label12 = new Label();
             label11 = new Label();
@@ -93,12 +128,12 @@
             checkBox1 = new CheckBox();
             label9 = new Label();
             label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
-            panel1.SuspendLayout();
+            label6 = new Label();
+            label7 = new Label();
+            form.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -120,106 +155,505 @@
             label2.TabIndex = 2;
             label2.Text = "Republic of the Philippines";
             // 
+            // form
+            // 
+            form.BackColor = SystemColors.ControlLightLight;
+            form.Controls.Add(panel18);
+            form.Controls.Add(panel17);
+            form.Controls.Add(panel16);
+            form.Controls.Add(panel15);
+            form.Controls.Add(label42);
+            form.Controls.Add(panel14);
+            form.Controls.Add(panel13);
+            form.Controls.Add(panel12);
+            form.Controls.Add(label41);
+            form.Controls.Add(label40);
+            form.Controls.Add(panel11);
+            form.Controls.Add(panel10);
+            form.Controls.Add(panel9);
+            form.Controls.Add(panel8);
+            form.Controls.Add(panel7);
+            form.Controls.Add(label39);
+            form.Controls.Add(panel6);
+            form.Controls.Add(label24);
+            form.Controls.Add(panel5);
+            form.Controls.Add(label21);
+            form.Controls.Add(panel4);
+            form.Controls.Add(panel3);
+            form.Controls.Add(panel2);
+            form.Controls.Add(panel1);
+            form.Controls.Add(age);
+            form.Controls.Add(address);
+            form.Controls.Add(amountFig1);
+            form.Controls.Add(assistance2);
+            form.Controls.Add(specifyAssistance);
+            form.Controls.Add(assistance1);
+            form.Controls.Add(fullname);
+            form.Controls.Add(ps);
+            form.Controls.Add(amountFig2);
+            form.Controls.Add(assistance3);
+            form.Controls.Add(amount2);
+            form.Controls.Add(pgadh);
+            form.Controls.Add(governor);
+            form.Controls.Add(address2);
+            form.Controls.Add(payableTo);
+            form.Controls.Add(currentDate);
+            form.Controls.Add(clientName);
+            form.Controls.Add(btnPrint);
+            form.Controls.Add(chkFemale);
+            form.Controls.Add(chkMale);
+            form.Controls.Add(checkBox27);
+            form.Controls.Add(label38);
+            form.Controls.Add(label33);
+            form.Controls.Add(label34);
+            form.Controls.Add(label36);
+            form.Controls.Add(label37);
+            form.Controls.Add(label31);
+            form.Controls.Add(label30);
+            form.Controls.Add(label29);
+            form.Controls.Add(label28);
+            form.Controls.Add(label27);
+            form.Controls.Add(label25);
+            form.Controls.Add(label23);
+            form.Controls.Add(label22);
+            form.Controls.Add(label20);
+            form.Controls.Add(label19);
+            form.Controls.Add(label18);
+            form.Controls.Add(label15);
+            form.Controls.Add(label14);
+            form.Controls.Add(label26);
+            form.Controls.Add(othersSpecify);
+            form.Controls.Add(chkOthers);
+            form.Controls.Add(pwd);
+            form.Controls.Add(solo);
+            form.Controls.Add(senior);
+            form.Controls.Add(fhona);
+            form.Controls.Add(youth);
+            form.Controls.Add(label13);
+            form.Controls.Add(label12);
+            form.Controls.Add(label11);
+            form.Controls.Add(label10);
+            form.Controls.Add(checkBox17);
+            form.Controls.Add(checkBox18);
+            form.Controls.Add(checkBox19);
+            form.Controls.Add(checkBox20);
+            form.Controls.Add(checkBox13);
+            form.Controls.Add(checkBox14);
+            form.Controls.Add(checkBox15);
+            form.Controls.Add(checkBox16);
+            form.Controls.Add(checkBox9);
+            form.Controls.Add(checkBox10);
+            form.Controls.Add(checkBox11);
+            form.Controls.Add(checkBox12);
+            form.Controls.Add(checkBox5);
+            form.Controls.Add(checkBox6);
+            form.Controls.Add(checkBox7);
+            form.Controls.Add(checkBox8);
+            form.Controls.Add(checkBox3);
+            form.Controls.Add(checkBox4);
+            form.Controls.Add(checkBox2);
+            form.Controls.Add(checkBox1);
+            form.Controls.Add(label9);
+            form.Controls.Add(label8);
+            form.Controls.Add(label5);
+            form.Controls.Add(label4);
+            form.Controls.Add(label3);
+            form.Controls.Add(label2);
+            form.Controls.Add(label1);
+            form.Controls.Add(label6);
+            form.Controls.Add(label7);
+            form.Location = new Point(12, 12);
+            form.Name = "form";
+            form.Size = new Size(1022, 1151);
+            form.TabIndex = 0;
+            form.Paint += panel1_Paint;
+            // 
+            // panel18
+            // 
+            panel18.BorderStyle = BorderStyle.FixedSingle;
+            panel18.Location = new Point(540, 626);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(393, 2);
+            panel18.TabIndex = 136;
+            // 
+            // panel17
+            // 
+            panel17.BorderStyle = BorderStyle.FixedSingle;
+            panel17.Location = new Point(46, 672);
+            panel17.Name = "panel17";
+            panel17.Size = new Size(393, 2);
+            panel17.TabIndex = 135;
+            // 
+            // panel16
+            // 
+            panel16.BorderStyle = BorderStyle.FixedSingle;
+            panel16.Location = new Point(546, 1078);
+            panel16.Name = "panel16";
+            panel16.Size = new Size(393, 2);
+            panel16.TabIndex = 134;
+            // 
+            // panel15
+            // 
+            panel15.BorderStyle = BorderStyle.FixedSingle;
+            panel15.Location = new Point(47, 1078);
+            panel15.Name = "panel15";
+            panel15.Size = new Size(393, 2);
+            panel15.TabIndex = 133;
+            // 
+            // label42
+            // 
+            label42.Location = new Point(824, 988);
+            label42.Name = "label42";
+            label42.Size = new Size(84, 24);
+            label42.TabIndex = 132;
+            label42.Text = "assistance.";
+            // 
+            // panel14
+            // 
+            panel14.BorderStyle = BorderStyle.FixedSingle;
+            panel14.Location = new Point(561, 1008);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(270, 2);
+            panel14.TabIndex = 131;
+            // 
+            // panel13
+            // 
+            panel13.BorderStyle = BorderStyle.FixedSingle;
+            panel13.Location = new Point(711, 967);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(200, 2);
+            panel13.TabIndex = 130;
+            // 
+            // panel12
+            // 
+            panel12.BorderStyle = BorderStyle.FixedSingle;
+            panel12.Location = new Point(270, 967);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(400, 2);
+            panel12.TabIndex = 129;
+            // 
+            // label41
+            // 
+            label41.Location = new Point(46, 972);
+            label41.Name = "label41";
+            label41.Size = new Size(516, 52);
+            label41.TabIndex = 128;
+            label41.Text = "\r\nMula sa Provincial Social Welfare and Development Office (PSWDO) para sa\r\n";
+            // 
+            // label40
+            // 
+            label40.Location = new Point(671, 948);
+            label40.Name = "label40";
+            label40.Size = new Size(38, 24);
+            label40.TabIndex = 127;
+            label40.Text = "Php";
+            // 
+            // panel11
+            // 
+            panel11.BorderStyle = BorderStyle.FixedSingle;
+            panel11.Location = new Point(112, 931);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(150, 2);
+            panel11.TabIndex = 126;
+            // 
+            // panel10
+            // 
+            panel10.BorderStyle = BorderStyle.FixedSingle;
+            panel10.Location = new Point(136, 864);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(392, 2);
+            panel10.TabIndex = 125;
+            // 
+            // panel9
+            // 
+            panel9.BorderStyle = BorderStyle.FixedSingle;
+            panel9.Location = new Point(135, 832);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(393, 2);
+            panel9.TabIndex = 124;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Location = new Point(713, 539);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(160, 2);
+            panel8.TabIndex = 123;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(176, 541);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(494, 2);
+            panel7.TabIndex = 122;
+            // 
+            // label39
+            // 
+            label39.Location = new Point(673, 520);
+            label39.Name = "label39";
+            label39.Size = new Size(38, 24);
+            label39.TabIndex = 121;
+            label39.Text = "Php";
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Location = new Point(131, 506);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(742, 2);
+            panel6.TabIndex = 120;
+            // 
+            // label24
+            // 
+            label24.Location = new Point(803, 456);
+            label24.Name = "label24";
+            label24.Size = new Size(84, 24);
+            label24.TabIndex = 119;
+            label24.Text = "Assistance.";
+            // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Location = new Point(317, 477);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(480, 2);
+            panel5.TabIndex = 118;
+            // 
+            // label21
+            // 
+            label21.Location = new Point(872, 221);
+            label21.Name = "label21";
+            label21.Size = new Size(46, 24);
+            label21.TabIndex = 117;
+            label21.Text = "after.";
+            // 
+            // panel4
+            // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Location = new Point(366, 238);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(500, 2);
+            panel4.TabIndex = 116;
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Location = new Point(32, 204);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(70, 2);
+            panel3.TabIndex = 115;
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Location = new Point(423, 205);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(516, 2);
+            panel2.TabIndex = 114;
+            // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.Controls.Add(checkBox28);
-            panel1.Controls.Add(checkBox29);
-            panel1.Controls.Add(checkBox27);
-            panel1.Controls.Add(label38);
-            panel1.Controls.Add(label32);
-            panel1.Controls.Add(label33);
-            panel1.Controls.Add(label34);
-            panel1.Controls.Add(label35);
-            panel1.Controls.Add(label36);
-            panel1.Controls.Add(label37);
-            panel1.Controls.Add(label31);
-            panel1.Controls.Add(label30);
-            panel1.Controls.Add(label29);
-            panel1.Controls.Add(label28);
-            panel1.Controls.Add(label27);
-            panel1.Controls.Add(label24);
-            panel1.Controls.Add(label25);
-            panel1.Controls.Add(label23);
-            panel1.Controls.Add(label21);
-            panel1.Controls.Add(label22);
-            panel1.Controls.Add(label20);
-            panel1.Controls.Add(label19);
-            panel1.Controls.Add(label17);
-            panel1.Controls.Add(label18);
-            panel1.Controls.Add(label16);
-            panel1.Controls.Add(label15);
-            panel1.Controls.Add(label14);
-            panel1.Controls.Add(label26);
-            panel1.Controls.Add(textBox19);
-            panel1.Controls.Add(checkBox21);
-            panel1.Controls.Add(checkBox22);
-            panel1.Controls.Add(checkBox23);
-            panel1.Controls.Add(checkBox24);
-            panel1.Controls.Add(checkBox25);
-            panel1.Controls.Add(checkBox26);
-            panel1.Controls.Add(label13);
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(label10);
-            panel1.Controls.Add(checkBox17);
-            panel1.Controls.Add(checkBox18);
-            panel1.Controls.Add(checkBox19);
-            panel1.Controls.Add(checkBox20);
-            panel1.Controls.Add(checkBox13);
-            panel1.Controls.Add(checkBox14);
-            panel1.Controls.Add(checkBox15);
-            panel1.Controls.Add(checkBox16);
-            panel1.Controls.Add(checkBox9);
-            panel1.Controls.Add(checkBox10);
-            panel1.Controls.Add(checkBox11);
-            panel1.Controls.Add(checkBox12);
-            panel1.Controls.Add(checkBox5);
-            panel1.Controls.Add(checkBox6);
-            panel1.Controls.Add(checkBox7);
-            panel1.Controls.Add(checkBox8);
-            panel1.Controls.Add(checkBox3);
-            panel1.Controls.Add(checkBox4);
-            panel1.Controls.Add(checkBox2);
-            panel1.Controls.Add(checkBox1);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(label7);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(12, 12);
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Location = new Point(194, 168);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1022, 1151);
-            panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            panel1.Size = new Size(564, 2);
+            panel1.TabIndex = 113;
             // 
-            // checkBox28
+            // age
             // 
-            checkBox28.AutoSize = true;
-            checkBox28.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox28.Location = new Point(877, 156);
-            checkBox28.Name = "checkBox28";
-            checkBox28.Size = new Size(71, 21);
-            checkBox28.TabIndex = 94;
-            checkBox28.Text = "Female";
-            checkBox28.TextAlign = ContentAlignment.BottomCenter;
-            checkBox28.UseVisualStyleBackColor = true;
+            age.Location = new Point(33, 180);
+            age.Name = "age";
+            age.Size = new Size(69, 20);
+            age.TabIndex = 97;
+            age.Text = "_";
+            age.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // checkBox29
+            // address
             // 
-            checkBox29.AutoSize = true;
-            checkBox29.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox29.Location = new Point(807, 156);
-            checkBox29.Name = "checkBox29";
-            checkBox29.Size = new Size(59, 21);
-            checkBox29.TabIndex = 93;
-            checkBox29.Text = "Male";
-            checkBox29.TextAlign = ContentAlignment.BottomCenter;
-            checkBox29.UseVisualStyleBackColor = true;
+            address.Location = new Point(425, 182);
+            address.Name = "address";
+            address.Size = new Size(514, 20);
+            address.TabIndex = 98;
+            address.Text = "_";
+            address.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // amountFig1
+            // 
+            amountFig1.AutoSize = true;
+            amountFig1.Location = new Point(713, 516);
+            amountFig1.Name = "amountFig1";
+            amountFig1.Size = new Size(15, 20);
+            amountFig1.TabIndex = 111;
+            amountFig1.Text = "-";
+            // 
+            // assistance2
+            // 
+            assistance2.Location = new Point(317, 456);
+            assistance2.Name = "assistance2";
+            assistance2.Size = new Size(480, 20);
+            assistance2.TabIndex = 108;
+            assistance2.Text = "-";
+            assistance2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // specifyAssistance
+            // 
+            specifyAssistance.AutoSize = true;
+            specifyAssistance.Location = new Point(134, 483);
+            specifyAssistance.Name = "specifyAssistance";
+            specifyAssistance.Size = new Size(15, 20);
+            specifyAssistance.TabIndex = 109;
+            specifyAssistance.Text = "-";
+            // 
+            // assistance1
+            // 
+            assistance1.Location = new Point(369, 215);
+            assistance1.Name = "assistance1";
+            assistance1.Size = new Size(497, 20);
+            assistance1.TabIndex = 107;
+            assistance1.Text = "-";
+            assistance1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // fullname
+            // 
+            fullname.Location = new Point(195, 144);
+            fullname.Name = "fullname";
+            fullname.Size = new Size(563, 20);
+            fullname.TabIndex = 96;
+            fullname.Text = "_";
+            fullname.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // ps
+            // 
+            ps.AutoSize = true;
+            ps.Font = new Font("Segoe UI", 7.20000029F);
+            ps.Location = new Point(512, 564);
+            ps.Name = "ps";
+            ps.Size = new Size(50, 21);
+            ps.TabIndex = 112;
+            ps.Text = "4Ps";
+            ps.TextAlign = ContentAlignment.BottomCenter;
+            ps.UseVisualStyleBackColor = true;
+            // 
+            // amountFig2
+            // 
+            amountFig2.AutoSize = true;
+            amountFig2.Location = new Point(711, 944);
+            amountFig2.Name = "amountFig2";
+            amountFig2.Size = new Size(15, 20);
+            amountFig2.TabIndex = 110;
+            amountFig2.Text = "-";
+            // 
+            // assistance3
+            // 
+            assistance3.AutoSize = true;
+            assistance3.Location = new Point(564, 985);
+            assistance3.Name = "assistance3";
+            assistance3.Size = new Size(15, 20);
+            assistance3.TabIndex = 106;
+            assistance3.Text = "-";
+            assistance3.Click += assistance3_Click;
+            // 
+            // amount2
+            // 
+            amount2.AutoSize = true;
+            amount2.Location = new Point(273, 944);
+            amount2.Name = "amount2";
+            amount2.Size = new Size(15, 20);
+            amount2.TabIndex = 105;
+            amount2.Text = "-";
+            // 
+            // pgadh
+            // 
+            pgadh.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            pgadh.Location = new Point(46, 751);
+            pgadh.Name = "pgadh";
+            pgadh.Size = new Size(368, 27);
+            pgadh.TabIndex = 104;
+            pgadh.Text = "MYRA Z. RELATIVE, RSW";
+            pgadh.TextAlign = HorizontalAlignment.Center;
+            // 
+            // governor
+            // 
+            governor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            governor.Location = new Point(540, 751);
+            governor.Name = "governor";
+            governor.Size = new Size(368, 27);
+            governor.TabIndex = 103;
+            governor.Text = "EDWIN \"BOBOY\" B. HAMOR\r\n";
+            governor.TextAlign = HorizontalAlignment.Center;
+            // 
+            // address2
+            // 
+            address2.AutoSize = true;
+            address2.Location = new Point(137, 841);
+            address2.Name = "address2";
+            address2.Size = new Size(15, 20);
+            address2.TabIndex = 102;
+            address2.Text = "_";
+            // 
+            // payableTo
+            // 
+            payableTo.AutoSize = true;
+            payableTo.Location = new Point(137, 809);
+            payableTo.Name = "payableTo";
+            payableTo.Size = new Size(15, 20);
+            payableTo.TabIndex = 101;
+            payableTo.Text = "_";
+            // 
+            // currentDate
+            // 
+            currentDate.AutoSize = true;
+            currentDate.Location = new Point(114, 908);
+            currentDate.Name = "currentDate";
+            currentDate.Size = new Size(15, 20);
+            currentDate.TabIndex = 100;
+            currentDate.Text = "_";
+            currentDate.Click += currentDate_Click;
+            // 
+            // clientName
+            // 
+            clientName.Location = new Point(47, 1055);
+            clientName.Name = "clientName";
+            clientName.Size = new Size(392, 20);
+            clientName.TabIndex = 99;
+            clientName.Text = "_";
+            clientName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnPrint
+            // 
+            btnPrint.Location = new Point(860, 18);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(94, 29);
+            btnPrint.TabIndex = 95;
+            btnPrint.Text = "PRINT";
+            btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += button1_Click;
+            btnPrint.KeyDown += btnPrint_KeyDown;
+            // 
+            // chkFemale
+            // 
+            chkFemale.AutoSize = true;
+            chkFemale.Font = new Font("Segoe UI", 7.20000029F);
+            chkFemale.Location = new Point(877, 156);
+            chkFemale.Name = "chkFemale";
+            chkFemale.Size = new Size(71, 21);
+            chkFemale.TabIndex = 94;
+            chkFemale.Text = "Female";
+            chkFemale.TextAlign = ContentAlignment.BottomCenter;
+            chkFemale.UseVisualStyleBackColor = true;
+            // 
+            // chkMale
+            // 
+            chkMale.AutoSize = true;
+            chkMale.Font = new Font("Segoe UI", 7.20000029F);
+            chkMale.Location = new Point(807, 156);
+            chkMale.Name = "chkMale";
+            chkMale.Size = new Size(59, 21);
+            chkMale.TabIndex = 93;
+            chkMale.Text = "Male";
+            chkMale.TextAlign = ContentAlignment.BottomCenter;
+            chkMale.UseVisualStyleBackColor = true;
             // 
             // checkBox27
             // 
@@ -237,26 +671,17 @@
             // 
             label38.AutoSize = true;
             label38.Font = new Font("Segoe UI", 7.20000029F);
-            label38.Location = new Point(153, 1100);
+            label38.Location = new Point(172, 1100);
             label38.Name = "label38";
             label38.Size = new Size(116, 17);
             label38.TabIndex = 91;
             label38.Text = "Pangalan at Lagda";
             // 
-            // label32
-            // 
-            label32.Location = new Point(541, 1060);
-            label32.Name = "label32";
-            label32.Size = new Size(371, 23);
-            label32.TabIndex = 90;
-            label32.Text = "____________________________________________________________\r\n";
-            label32.Click += label32_Click;
-            // 
             // label33
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label33.Location = new Point(622, 1083);
+            label33.Location = new Point(627, 1083);
             label33.Name = "label33";
             label33.Size = new Size(209, 17);
             label33.TabIndex = 89;
@@ -272,19 +697,11 @@
             label34.TabIndex = 88;
             label34.Text = "Sinaksihan ni:";
             // 
-            // label35
-            // 
-            label35.Location = new Point(47, 1060);
-            label35.Name = "label35";
-            label35.Size = new Size(371, 23);
-            label35.TabIndex = 87;
-            label35.Text = "____________________________________________________________\r\n";
-            // 
             // label36
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(185, 1083);
+            label36.Location = new Point(204, 1083);
             label36.Name = "label36";
             label36.Size = new Size(44, 17);
             label36.TabIndex = 86;
@@ -304,33 +721,34 @@
             // 
             label31.Location = new Point(46, 952);
             label31.Name = "label31";
-            label31.Size = new Size(966, 59);
+            label31.Size = new Size(223, 28);
             label31.TabIndex = 84;
-            label31.Text = resources.GetString("label31.Text");
+            label31.Text = "Natanggap kona ang halagang ";
+            label31.Click += label31_Click;
             // 
             // label30
             // 
             label30.Location = new Point(46, 914);
             label30.Name = "label30";
-            label30.Size = new Size(463, 23);
+            label30.Size = new Size(56, 23);
             label30.TabIndex = 83;
-            label30.Text = "Petsa: _________________________\r\n";
+            label30.Text = "Petsa: \r\n\r\n";
             // 
             // label29
             // 
-            label29.Location = new Point(46, 845);
+            label29.Location = new Point(46, 849);
             label29.Name = "label29";
-            label29.Size = new Size(754, 23);
+            label29.Size = new Size(74, 23);
             label29.TabIndex = 82;
-            label29.Text = "Address: ______________________________________________________________\r\n";
+            label29.Text = "Address: \r\n\r\n";
             // 
             // label28
             // 
-            label28.Location = new Point(46, 811);
+            label28.Location = new Point(46, 816);
             label28.Name = "label28";
-            label28.Size = new Size(754, 23);
+            label28.Size = new Size(82, 23);
             label28.TabIndex = 81;
-            label28.Text = "Payable to: ____________________________________________________________";
+            label28.Text = "Payable to: \r\n";
             // 
             // label27
             // 
@@ -341,14 +759,6 @@
             label27.Size = new Size(257, 23);
             label27.TabIndex = 80;
             label27.Text = "ACKNOWLEDGEMENT RECEIPT\r\n";
-            // 
-            // label24
-            // 
-            label24.Location = new Point(540, 759);
-            label24.Name = "label24";
-            label24.Size = new Size(371, 23);
-            label24.TabIndex = 79;
-            label24.Text = "____________________________________________________________\r\n";
             // 
             // label25
             // 
@@ -369,14 +779,6 @@
             label23.Size = new Size(91, 17);
             label23.TabIndex = 77;
             label23.Text = "Approved By:";
-            // 
-            // label21
-            // 
-            label21.Location = new Point(46, 759);
-            label21.Name = "label21";
-            label21.Size = new Size(371, 23);
-            label21.TabIndex = 76;
-            label21.Text = "____________________________________________________________\r\n";
             // 
             // label22
             // 
@@ -408,14 +810,6 @@
             label19.TabIndex = 73;
             label19.Text = "Signature over Printed Name";
             // 
-            // label17
-            // 
-            label17.Location = new Point(46, 654);
-            label17.Name = "label17";
-            label17.Size = new Size(371, 23);
-            label17.TabIndex = 72;
-            label17.Text = "____________________________________________________________\r\n";
-            // 
             // label18
             // 
             label18.AutoSize = true;
@@ -425,14 +819,6 @@
             label18.Size = new Size(113, 17);
             label18.TabIndex = 71;
             label18.Text = "Requesting Party";
-            // 
-            // label16
-            // 
-            label16.Location = new Point(551, 608);
-            label16.Name = "label16";
-            label16.Size = new Size(371, 23);
-            label16.TabIndex = 70;
-            label16.Text = "____________________________________________________________\r\n";
             // 
             // label15
             // 
@@ -458,115 +844,115 @@
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 7.20000029F);
-            label26.Location = new Point(589, 565);
+            label26.Location = new Point(656, 565);
             label26.Name = "label26";
             label26.Size = new Size(49, 17);
             label26.TabIndex = 67;
             label26.Text = "Specify";
             // 
-            // textBox19
+            // othersSpecify
             // 
-            textBox19.Location = new Point(646, 562);
-            textBox19.Name = "textBox19";
-            textBox19.Size = new Size(152, 27);
-            textBox19.TabIndex = 66;
+            othersSpecify.Location = new Point(713, 562);
+            othersSpecify.Name = "othersSpecify";
+            othersSpecify.Size = new Size(152, 27);
+            othersSpecify.TabIndex = 66;
             // 
-            // checkBox21
+            // chkOthers
             // 
-            checkBox21.AutoSize = true;
-            checkBox21.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox21.Location = new Point(518, 565);
-            checkBox21.Name = "checkBox21";
-            checkBox21.Size = new Size(69, 21);
-            checkBox21.TabIndex = 65;
-            checkBox21.Text = "Others";
-            checkBox21.TextAlign = ContentAlignment.BottomCenter;
-            checkBox21.UseVisualStyleBackColor = true;
+            chkOthers.AutoSize = true;
+            chkOthers.Font = new Font("Segoe UI", 7.20000029F);
+            chkOthers.Location = new Point(585, 565);
+            chkOthers.Name = "chkOthers";
+            chkOthers.Size = new Size(69, 21);
+            chkOthers.TabIndex = 65;
+            chkOthers.Text = "Others";
+            chkOthers.TextAlign = ContentAlignment.BottomCenter;
+            chkOthers.UseVisualStyleBackColor = true;
             // 
-            // checkBox22
+            // pwd
             // 
-            checkBox22.AutoSize = true;
-            checkBox22.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox22.Location = new Point(451, 564);
-            checkBox22.Name = "checkBox22";
-            checkBox22.Size = new Size(58, 21);
-            checkBox22.TabIndex = 64;
-            checkBox22.Text = "PWD";
-            checkBox22.TextAlign = ContentAlignment.BottomCenter;
-            checkBox22.UseVisualStyleBackColor = true;
+            pwd.AutoSize = true;
+            pwd.Font = new Font("Segoe UI", 7.20000029F);
+            pwd.Location = new Point(449, 564);
+            pwd.Name = "pwd";
+            pwd.Size = new Size(58, 21);
+            pwd.TabIndex = 64;
+            pwd.Text = "PWD";
+            pwd.TextAlign = ContentAlignment.BottomCenter;
+            pwd.UseVisualStyleBackColor = true;
             // 
-            // checkBox23
+            // solo
             // 
-            checkBox23.AutoSize = true;
-            checkBox23.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox23.Location = new Point(339, 564);
-            checkBox23.Name = "checkBox23";
-            checkBox23.Size = new Size(97, 21);
-            checkBox23.TabIndex = 63;
-            checkBox23.Text = "Solo Parent";
-            checkBox23.TextAlign = ContentAlignment.BottomCenter;
-            checkBox23.UseVisualStyleBackColor = true;
+            solo.AutoSize = true;
+            solo.Font = new Font("Segoe UI", 7.20000029F);
+            solo.Location = new Point(339, 564);
+            solo.Name = "solo";
+            solo.Size = new Size(97, 21);
+            solo.TabIndex = 63;
+            solo.Text = "Solo Parent";
+            solo.TextAlign = ContentAlignment.BottomCenter;
+            solo.UseVisualStyleBackColor = true;
             // 
-            // checkBox24
+            // senior
             // 
-            checkBox24.AutoSize = true;
-            checkBox24.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox24.Location = new Point(211, 564);
-            checkBox24.Name = "checkBox24";
-            checkBox24.Size = new Size(109, 21);
-            checkBox24.TabIndex = 62;
-            checkBox24.Text = "Senior Citizen";
-            checkBox24.TextAlign = ContentAlignment.BottomCenter;
-            checkBox24.UseVisualStyleBackColor = true;
+            senior.AutoSize = true;
+            senior.Font = new Font("Segoe UI", 7.20000029F);
+            senior.Location = new Point(211, 564);
+            senior.Name = "senior";
+            senior.Size = new Size(109, 21);
+            senior.TabIndex = 62;
+            senior.Text = "Senior Citizen";
+            senior.TextAlign = ContentAlignment.BottomCenter;
+            senior.UseVisualStyleBackColor = true;
             // 
-            // checkBox25
+            // fhona
             // 
-            checkBox25.AutoSize = true;
-            checkBox25.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox25.Location = new Point(128, 564);
-            checkBox25.Name = "checkBox25";
-            checkBox25.Size = new Size(73, 21);
-            checkBox25.TabIndex = 61;
-            checkBox25.Text = "FHONA";
-            checkBox25.TextAlign = ContentAlignment.BottomCenter;
-            checkBox25.UseVisualStyleBackColor = true;
+            fhona.AutoSize = true;
+            fhona.Font = new Font("Segoe UI", 7.20000029F);
+            fhona.Location = new Point(128, 564);
+            fhona.Name = "fhona";
+            fhona.Size = new Size(73, 21);
+            fhona.TabIndex = 61;
+            fhona.Text = "FHONA";
+            fhona.TextAlign = ContentAlignment.BottomCenter;
+            fhona.UseVisualStyleBackColor = true;
             // 
-            // checkBox26
+            // youth
             // 
-            checkBox26.AutoSize = true;
-            checkBox26.Font = new Font("Segoe UI", 7.20000029F);
-            checkBox26.Location = new Point(58, 564);
-            checkBox26.Name = "checkBox26";
-            checkBox26.Size = new Size(62, 21);
-            checkBox26.TabIndex = 60;
-            checkBox26.Text = "Youth";
-            checkBox26.TextAlign = ContentAlignment.BottomCenter;
-            checkBox26.UseVisualStyleBackColor = true;
-            checkBox26.CheckedChanged += checkBox26_CheckedChanged;
+            youth.AutoSize = true;
+            youth.Font = new Font("Segoe UI", 7.20000029F);
+            youth.Location = new Point(58, 564);
+            youth.Name = "youth";
+            youth.Size = new Size(62, 21);
+            youth.TabIndex = 60;
+            youth.Text = "Youth";
+            youth.TextAlign = ContentAlignment.BottomCenter;
+            youth.UseVisualStyleBackColor = true;
+            youth.CheckedChanged += checkBox26_CheckedChanged;
             // 
             // label13
             // 
             label13.Location = new Point(46, 526);
             label13.Name = "label13";
-            label13.Size = new Size(902, 30);
+            label13.Size = new Size(128, 30);
             label13.TabIndex = 38;
-            label13.Text = "In the amount of ___________________________________________________________________________________ Php ________________________\r\n\r\n\r\n\r\n";
+            label13.Text = "In the amount of\r\n\r\n\r\n\r\n\r\n";
             // 
             // label12
             // 
-            label12.Location = new Point(68, 487);
+            label12.Location = new Point(68, 489);
             label12.Name = "label12";
-            label12.Size = new Size(814, 27);
+            label12.Size = new Size(60, 27);
             label12.TabIndex = 37;
-            label12.Text = "Specify _____________________________________________________________________________________________________________________________\r\n\r\n\r\n";
+            label12.Text = "Specify \r\n\r\n\r\n";
             // 
             // label11
             // 
             label11.Location = new Point(68, 460);
             label11.Name = "label11";
-            label11.Size = new Size(814, 27);
+            label11.Size = new Size(243, 27);
             label11.TabIndex = 36;
-            label11.Text = "Clients is hereby recommended for ___________________________________________________________________________ Assistance.\r\n\r\n";
+            label11.Text = "Clients is hereby recommended for\r\n";
             // 
             // label10
             // 
@@ -830,26 +1216,9 @@
             // 
             label8.Location = new Point(25, 221);
             label8.Name = "label8";
-            label8.Size = new Size(966, 24);
+            label8.Size = new Size(345, 24);
             label8.TabIndex = 8;
-            label8.Text = "has been found eligible for financial assistance for ________________________________________________________________________________________ after\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
-            // 
-            // label7
-            // 
-            label7.Location = new Point(25, 190);
-            label7.Name = "label7";
-            label7.Size = new Size(975, 25);
-            label7.TabIndex = 7;
-            label7.Text = "_______ years old and presenty/temporary residing at  _____________________________________________________________________________________________________\r\n\r\n\r\n\r\n";
-            // 
-            // label6
-            // 
-            label6.Location = new Point(46, 154);
-            label6.Name = "label6";
-            label6.Size = new Size(754, 23);
-            label6.TabIndex = 6;
-            label6.Text = "This is to cetify that ____________________________________________________________________________________________________\r\n";
-            label6.Click += label6_Click;
+            label8.Text = "has been found eligible for financial assistance for \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n";
             // 
             // label5
             // 
@@ -880,17 +1249,38 @@
             label3.TabIndex = 3;
             label3.Text = "Province of Sorsogon";
             // 
+            // label6
+            // 
+            label6.Location = new Point(46, 154);
+            label6.Name = "label6";
+            label6.Size = new Size(142, 23);
+            label6.TabIndex = 6;
+            label6.Text = "This is to cetify that";
+            label6.Click += label6_Click;
+            // 
+            // label7
+            // 
+            label7.Location = new Point(113, 189);
+            label7.Name = "label7";
+            label7.Size = new Size(320, 25);
+            label7.TabIndex = 7;
+            label7.Text = "years old and presenty/temporary residing at \r\n\r\n\r\n\r\n";
+            // 
             // CertificateOfEligibility
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1046, 1175);
-            Controls.Add(panel1);
+            Controls.Add(form);
+            MaximizeBox = false;
             Name = "CertificateOfEligibility";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "CertificateOfEligibility";
+            WindowState = FormWindowState.Minimized;
             Load += CertificateOfEligibility_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            KeyDown += CertificateOfEligibility_KeyDown;
+            form.ResumeLayout(false);
+            form.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -898,7 +1288,7 @@
 
         private Label label1;
         private Label label2;
-        private Panel panel1;
+        private Panel form;
         private Label label4;
         private Label label3;
         private Label label5;
@@ -931,23 +1321,19 @@
         private Label label12;
         private Label label13;
         private Label label26;
-        private TextBox textBox19;
-        private CheckBox checkBox21;
-        private CheckBox checkBox22;
-        private CheckBox checkBox23;
-        private CheckBox checkBox24;
-        private CheckBox checkBox25;
-        private CheckBox checkBox26;
+        private TextBox othersSpecify;
+        private CheckBox chkOthers;
+        private CheckBox pwd;
+        private CheckBox solo;
+        private CheckBox senior;
+        private CheckBox fhona;
+        private CheckBox youth;
         private Label label14;
-        private Label label16;
         private Label label15;
         private Label label19;
-        private Label label17;
         private Label label18;
-        private Label label24;
         private Label label25;
         private Label label23;
-        private Label label21;
         private Label label22;
         private Label label20;
         private Label label27;
@@ -956,14 +1342,54 @@
         private Label label29;
         private Label label31;
         private Label label38;
-        private Label label32;
         private Label label33;
         private Label label34;
-        private Label label35;
         private Label label36;
         private Label label37;
         private CheckBox checkBox27;
-        private CheckBox checkBox28;
-        private CheckBox checkBox29;
+        private CheckBox chkFemale;
+        private CheckBox chkMale;
+        private Button btnPrint;
+        private Label fullname;
+        private Label age;
+        private Label address;
+        private Label clientName;
+        private Label currentDate;
+        private Label payableTo;
+        private Label address2;
+        private TextBox governor;
+        private TextBox pgadh;
+        private Label amount2;
+        private Label assistance3;
+        private Label assistance1;
+        private Label assistance2;
+        private Label specifyAssistance;
+        private Label amountFig2;
+        private Label amountFig1;
+        private CheckBox ps;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Label label21;
+        private Panel panel5;
+        private Label label24;
+        private Panel panel6;
+        private Label label39;
+        private Panel panel8;
+        private Panel panel7;
+        private Panel panel10;
+        private Panel panel9;
+        private Panel panel11;
+        private Label label40;
+        private Label label41;
+        private Panel panel12;
+        private Panel panel13;
+        private Panel panel14;
+        private Label label42;
+        private Panel panel15;
+        private Panel panel16;
+        private Panel panel18;
+        private Panel panel17;
     }
 }

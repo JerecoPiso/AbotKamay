@@ -22,8 +22,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void LoginForm_Load(object sender, EventArgs e)
         {
             timeDateTimer.Start();
-            //txtUsername.Text = "clerk3";
-            //txtPassword.Text = "Cl3rk333";
+            txtUsername.Text = "clerk3";
+            txtPassword.Text = "Cl3rk333";
             txtUsername.Text = "socialworker1";
             txtPassword.Text = "Worker1p@55";
 

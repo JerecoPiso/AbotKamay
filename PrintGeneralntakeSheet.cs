@@ -26,7 +26,6 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void PrintGeneralntakeSheet_Load(object sender, EventArgs e)
         {
-
             string client = @"SELECT ci.*, 
                 bi.last_name as blname,
                 bi.first_name as bfname,
@@ -47,7 +46,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 bi.street_purok as bstreet,
                 bi.civil_status as bcivil,
                 bi.civil_status_other as bcivilother 
-                FROM clientinformation AS ci LEFT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id WHERE ci.client_id = @client_id";
+                FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id WHERE ci.client_id = @client_id";
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(client, conn))
@@ -80,7 +79,6 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                             bage.Text = rd["bage"].ToString();
                             bpob.Text = rd["bbirth_place"].ToString();
                             bcontact.Text = rd["bcontact"].ToString();
-
                             //MessageBox.Show(rd["last_name"].ToString());
                         }
                     }
@@ -91,6 +89,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            btnPrint.Visible = false;
             Bitmap panelBitmap = new Bitmap(form.Width, form.Height);
 
             form.DrawToBitmap(panelBitmap, new Rectangle(0, 0, form.Width, form.Height));
@@ -104,6 +104,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 e1.Graphics.DrawImage(panelBitmap, 0, 0);
             };
             printDoc.Print();
+            btnPrint.Visible = true;
+            this.home._GisPrint = true;
+            if (this.home._GisPrint && this.home._CoePrint && this.home._RerPrint)
+            {
+                this.home.btnStep4Save.Enabled = true;
+                this.home.panelPrintForm.Visible = false;
+                MessageBox.Show("You can now save the information!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
@@ -129,6 +137,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void richTextBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void PrintGeneralntakeSheet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                btnPrint.PerformClick();
+            }
         }
     }
 }

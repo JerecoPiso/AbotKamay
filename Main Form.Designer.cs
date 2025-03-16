@@ -57,6 +57,7 @@
             lblUser = new Label();
             userButton = new PictureBox();
             panelSideBar = new Panel();
+            button1 = new Button();
             panelBlue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             minExPanel.SuspendLayout();
@@ -81,6 +82,7 @@
             panelBlue.Name = "panelBlue";
             panelBlue.Size = new Size(1920, 105);
             panelBlue.TabIndex = 5;
+            panelBlue.Paint += panelBlue_Paint;
             // 
             // pictureBox1
             // 
@@ -288,9 +290,9 @@
             panel6.Controls.Add(lblTimenow);
             panel6.Controls.Add(lblDate);
             panel6.Controls.Add(lblTime);
-            panel6.Location = new Point(389, 105);
+            panel6.Location = new Point(509, 105);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1531, 51);
+            panel6.Size = new Size(1411, 51);
             panel6.TabIndex = 21;
             // 
             // lblTimenow
@@ -298,7 +300,7 @@
             lblTimenow.AutoSize = true;
             lblTimenow.Font = new Font("Microsoft YaHei UI", 10.2F);
             lblTimenow.ForeColor = Color.FromArgb(64, 64, 64);
-            lblTimenow.Location = new Point(1390, 15);
+            lblTimenow.Location = new Point(1263, 15);
             lblTimenow.Name = "lblTimenow";
             lblTimenow.Size = new Size(119, 23);
             lblTimenow.TabIndex = 49;
@@ -309,7 +311,7 @@
             lblDate.AutoSize = true;
             lblDate.Font = new Font("Microsoft YaHei UI", 10.2F);
             lblDate.ForeColor = Color.FromArgb(64, 64, 64);
-            lblDate.Location = new Point(1124, 15);
+            lblDate.Location = new Point(1024, 15);
             lblDate.Name = "lblDate";
             lblDate.Size = new Size(124, 23);
             lblDate.TabIndex = 48;
@@ -373,11 +375,24 @@
             panelSideBar.Size = new Size(389, 976);
             panelSideBar.TabIndex = 22;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.MediumSeaGreen;
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(388, 105);
+            button1.Name = "button1";
+            button1.Size = new Size(123, 51);
+            button1.TabIndex = 23;
+            button1.Text = "BACK";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(button1);
             Controls.Add(panelSideBar);
             Controls.Add(panel6);
             Controls.Add(mainPanel);
@@ -423,7 +438,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
         private PictureBox userButton;
-        private Button btnHome;
         private Panel panelSideBar;
         private Button btnLogout;
         private Label lblTimenow;
@@ -436,5 +450,7 @@
         private ToolStripMenuItem recordToolStripMenuItem;
         private ToolStripMenuItem viewToolStripMenuItem;
         private ToolStripMenuItem createToolStripMenuItem;
+        public Button btnHome;
+        private Button button1;
     }
 }

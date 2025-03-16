@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,10 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         public int? clientId;
         private string fullName;
 
+        public bool _GisPrint;
+        public bool _CoePrint;
+        public bool _RerPrint;
+
         public Step4Form(string userRole, int? clientId = null, string fullName = null)
         {
             InitializeComponent();
@@ -30,7 +35,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             role = userRole;
             this.clientId = clientId;
             this.fullName = fullName;
-
+            this.txtPayeeName.Text = fullName;
             lblGetName.Text = fullName;  // Display full name in the label
 
 
@@ -56,6 +61,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void Step4Form_Load(object sender, EventArgs e)
         {
+            button5.PerformClick();
             timeDateTimer.Start();
         }
 
@@ -73,7 +79,9 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
                 {
                     // Set the correct ID based on whether it is client or beneficiary
-                    cmd.Parameters.AddWithValue("@client_id", IsClient ? SelectedId : (object)DBNull.Value);
+                    //cmd.Parameters.AddWithValue("@client_id", IsClient ? SelectedId : (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@client_id", clientId);
+
                     cmd.Parameters.AddWithValue("@beneficiary_id", !IsClient ? SelectedId : (object)DBNull.Value);
                     cmd.Parameters.AddWithValue("@problem", txtProblem.Text);
                     cmd.Parameters.AddWithValue("@assessment", txtAssessment.Text);
@@ -90,45 +98,86 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void btnSaveTwo_Click(object sender, EventArgs e)
         {
-            if (ValidateAssistance())
+            int bid = 1;
+            string q = @"SELECT beneficiary_id FROM beneficiaryinformation where client_id = @client_id ORDER BY beneficiary_id DESC LIMIT 1";
+            using (MySqlConnection conn = DatabaseConnection.GetConnection())
+            using (MySqlCommand cd = new MySqlCommand(q, conn))
             {
-                string sqlQuery = "INSERT INTO assistanceinformation (client_id, beneficiary_id, counselling, legal_assistance, referral_specify, other, amount, mode_of_assistance, financial_assistance, medical, burial, transpo, specify, value_pesos, fund_source, material_assistance, food_pack, used_clothing, material_specify, material_value_pesos, payee_name, payee_address) " +
-                                  "VALUES (@client_id, @beneficiary_id, @counselling, @legal_assistance, @referral_specify, @other, @amount, @mode_of_assistance, @financial_assistance, @medical, @burial, @transpo, @specify, @value_pesos, @fund_source, @material_assistance, @food_pack, @used_clothing, @material_specify, @material_value_pesos, @payee_name, @payee_address)";
+                cd.Parameters.AddWithValue("@client_id", clientId);
+                using (MySqlDataReader rd = cd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        bid = rd.GetInt32("beneficiary_id");
+                    }
+                }
+            }
+
+            if (ValidateAssessment())
+            {
+                //string selectedCategory = GetSelectedCategory(); // Method to get the checked category
+                string qry = "INSERT INTO AssessmentInformation (client_id, beneficiary_id, problem_presented, social_worker_assessment, client_category, client_sub_category) " +
+                                  "VALUES (@client_id, @beneficiary_id, @problem, @assessment, @category, @subCategory)";
 
                 using (MySqlConnection connection = DatabaseConnection.GetConnection())
-                using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+                using (MySqlCommand cmd = new MySqlCommand(qry, connection))
                 {
-                    cmd.Parameters.AddWithValue("@client_id", IsClient ? SelectedId : (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@beneficiary_id", !IsClient ? SelectedId : (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@counselling", rBtnCounselling.Checked);
-                    cmd.Parameters.AddWithValue("@legal_assistance", rBtnLegalAssistance.Checked);
-                    cmd.Parameters.AddWithValue("@referral_specify", rBtnReferralSpecify.Checked ? txtReferralSpecify.Text : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@other", rBtnOther.Checked ? txtOther.Text : DBNull.Value);
+                    // Set the correct ID based on whether it is client or beneficiary
+                    cmd.Parameters.AddWithValue("@client_id", clientId);
+                    cmd.Parameters.AddWithValue("@beneficiary_id", bid);
+                    cmd.Parameters.AddWithValue("@problem", txtProblem.Text);
+                    cmd.Parameters.AddWithValue("@assessment", txtAssessment.Text);
+                    cmd.Parameters.AddWithValue("@category", cmbClientCateg.SelectedIndex);
+                    cmd.Parameters.AddWithValue("@subCategory", txtClientSub.Text);
 
-                    // Parse and save the currency values correctly
-                    cmd.Parameters.AddWithValue("@amount", ParseCurrencyToDecimal(txtAmount.Text));
-                    cmd.Parameters.AddWithValue("@mode_of_assistance", rBtnCash.Checked ? "Cash" : rBtnGL.Checked ? "GL" : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@financial_assistance", rBtnFinancialAssistance.Checked);
-                    cmd.Parameters.AddWithValue("@medical", chkMedical.Checked);
-                    cmd.Parameters.AddWithValue("@burial", chkBurial.Checked);
-                    cmd.Parameters.AddWithValue("@transpo", chkTranspo.Checked);
-                    cmd.Parameters.AddWithValue("@specify", txtSpecify.Text);
-                    cmd.Parameters.AddWithValue("@value_pesos", ParseCurrencyToDecimal(txtValuePesos.Text));
-                    cmd.Parameters.AddWithValue("@fund_source", txtFundSource.Text);
-                    cmd.Parameters.AddWithValue("@material_assistance", rBtnMaterialAssistance.Checked);
-                    cmd.Parameters.AddWithValue("@food_pack", chkFoodPack.Checked);
-                    cmd.Parameters.AddWithValue("@used_clothing", chkUsedClothing.Checked);
-                    cmd.Parameters.AddWithValue("@material_specify", txtbSpecify.Text);
-                    cmd.Parameters.AddWithValue("@material_value_pesos", ParseCurrencyToDecimal(txtbValuePesos.Text));
-                    cmd.Parameters.AddWithValue("@payee_name", txtPayeeName.Text);
-                    cmd.Parameters.AddWithValue("@payee_address", txtPayeeAddress.Text);
-
-                    //connection.Open();
                     cmd.ExecuteNonQuery();
                 }
+                if (ValidateAssistance())
+                {
+                    string sqlQuery = "INSERT INTO assistanceinformation (client_id, beneficiary_id, counselling, legal_assistance, referral_specify, other, amount, mode_of_assistance, financial_assistance, medical, burial, transpo, specify, value_pesos, fund_source, material_assistance, food_pack, used_clothing, material_specify, material_value_pesos, payee_name, payee_address) " +
+                                      "VALUES (@client_id, @beneficiary_id, @counselling, @legal_assistance, @referral_specify, @other, @amount, @mode_of_assistance, @financial_assistance, @medical, @burial, @transpo, @specify, @value_pesos, @fund_source, @material_assistance, @food_pack, @used_clothing, @material_specify, @material_value_pesos, @payee_name, @payee_address)";
 
-                MessageBox.Show("Assistance information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (MySqlConnection connection = DatabaseConnection.GetConnection())
+                    using (MySqlCommand cmd = new MySqlCommand(sqlQuery, connection))
+                    {
+                        //cmd.Parameters.AddWithValue("@client_id", IsClient ? SelectedId : (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@client_id", clientId);
+
+                        cmd.Parameters.AddWithValue("@beneficiary_id", bid);
+                        cmd.Parameters.AddWithValue("@counselling", rBtnCounselling.Checked);
+                        cmd.Parameters.AddWithValue("@legal_assistance", rBtnLegalAssistance.Checked);
+                        cmd.Parameters.AddWithValue("@referral_specify", rBtnReferralSpecify.Checked ? txtReferralSpecify.Text : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@other", rBtnOther.Checked ? txtOther.Text : DBNull.Value);
+
+                        // Parse and save the currency values correctly
+                        cmd.Parameters.AddWithValue("@amount", ParseCurrencyToDecimal(txtAmount.Text));
+                        cmd.Parameters.AddWithValue("@mode_of_assistance", rBtnCash.Checked ? "Cash" : rBtnGL.Checked ? "GL" : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@financial_assistance", rBtnFinancialAssistance.Checked);
+                        cmd.Parameters.AddWithValue("@medical", chkMedical.Checked);
+                        cmd.Parameters.AddWithValue("@burial", chkBurial.Checked);
+                        cmd.Parameters.AddWithValue("@transpo", chkTranspo.Checked);
+                        cmd.Parameters.AddWithValue("@specify", txtSpecify.Text);
+                        cmd.Parameters.AddWithValue("@value_pesos", ParseCurrencyToDecimal(txtValuePesos.Text));
+                        cmd.Parameters.AddWithValue("@fund_source", txtFundSource.Text);
+                        cmd.Parameters.AddWithValue("@material_assistance", rBtnMaterialAssistance.Checked);
+                        cmd.Parameters.AddWithValue("@food_pack", chkFoodPack.Checked);
+                        cmd.Parameters.AddWithValue("@used_clothing", chkUsedClothing.Checked);
+                        cmd.Parameters.AddWithValue("@material_specify", txtbSpecify.Text);
+                        cmd.Parameters.AddWithValue("@material_value_pesos", ParseCurrencyToDecimal(txtbValuePesos.Text));
+                        cmd.Parameters.AddWithValue("@payee_name", txtPayeeName.Text);
+                        cmd.Parameters.AddWithValue("@payee_address", txtPayeeAddress.Text);
+
+                        //connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Assistance information and Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MainForm main = (MainForm)Application.OpenForms["MainForm"];
+                    main.btnHome.PerformClick();
+                }
+                //MessageBox.Show("Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
         }
 
         // Parse currency string to decimal
@@ -159,7 +208,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 ShowValidationError("Please enter the client sub-category.");
                 return false;
             }
-            //   if (string.IsNullOrEmpty(GetSelectedCategory()))
+            if (string.IsNullOrEmpty(cmbClientCateg.Text))
             {
                 ShowValidationError("Please select a client category.");
                 return false;
@@ -196,9 +245,6 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             MessageBox.Show(message, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-
-
 
         private void chkFinancialAssistance_CheckedChanged(object sender, EventArgs e)
         {
@@ -262,17 +308,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void rBtnReferralSpecify_CheckedChanged(object sender, EventArgs e)
         {
-            txtReferralSpecify.Enabled = rBtnReferralSpecify.Checked;
+            //MessageBox.Show("sd");
+            //  txtReferralSpecify.Enabled = rBtnReferralSpecify.Checked;
         }
 
         private void rBtnOther_CheckedChanged(object sender, EventArgs e)
         {
             txtOther.Enabled = rBtnOther.Checked;
         }
-
-
-
-
 
         private void FormatCurrencyTextBox(TextBox textBox)
         {
@@ -327,14 +370,82 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void btnNextToReco_Click(object sender, EventArgs e)
         {
+
             tabControl.SelectedTab = tabPage2;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PrintGeneralntakeSheet printForm = new PrintGeneralntakeSheet(this);
-            //CertificateOfEligibility printForm = new CertificateOfEligibility();
-            printForm.Show();
+            //PrintGeneralntakeSheet printForm = new PrintGeneralntakeSheet(this);
+            // CertificateOfEligibility printForm = new CertificateOfEligibility(this);
+            // ReimbursementExpenseReceipt printForm = new ReimbursementExpenseReceipt(this);
+
+            // printForm.Show();
+            if(ValidateAssessment() && ValidateAssistance())
+            {
+                panelPrintForm.Visible = true;
+
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void rBtnGL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rBtnCash_CheckedChanged(object sender, EventArgs e)
+        {
+            return;
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void groupBox12_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gis_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (gis.Checked)
+            {
+                PrintGeneralntakeSheet pis = new PrintGeneralntakeSheet(this);
+                pis.Show();
+            }
+
+        }
+
+        private void coe_CheckedChanged(object sender, EventArgs e)
+        {
+            if (coe.Checked)
+            {
+                CertificateOfEligibility coe = new CertificateOfEligibility(this);
+                coe.Show();
+            }
+
+        }
+
+        private void rer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rer.Checked)
+            {
+                ReimbursementExpenseReceipt rer = new ReimbursementExpenseReceipt(this);
+                rer.Show();
+            }
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            panelPrintForm.Visible = false;
         }
     }
 }

@@ -560,6 +560,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             switch (role)
             {
                 case "Admin Clerk 3" when buttonText == "Add" || buttonText == "Edit":
+                    MessageBox.Show("df");
                     Step3Form step3Form = new Step3Form(role, clientId, fullName);
                     loadform(step3Form);
                     break;
@@ -586,17 +587,17 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             dgClient.Columns["LastAssistanceDate"].HeaderText = "Last Assistance Date";
             dgClient.Columns["Eligibility"].HeaderText = "Eligibility";
 
-            dgClient.Columns["FullName"].Width = 280;
-            dgClient.Columns["ContactNumber"].Width = 240;
-            dgClient.Columns["LastAssistanceDate"].Width = 280;
-            dgClient.Columns["Eligibility"].Width = 250;
+         //   dgClient.Columns["FullName"].Width = 280;
+        //    dgClient.Columns["ContactNumber"].Width = 240;
+          //  dgClient.Columns["LastAssistanceDate"].Width = 280;
+          //  dgClient.Columns["Eligibility"].Width = 250;
 
 
             dgClient.Columns["LastAssistanceDate"].DefaultCellStyle.Format = "MMMM dd, yyyy";
             if (role.Equals("Social Worker"))
             {
-                dgClient.Columns["FullName"].Width = 410;
-                dgClient.Columns["LastAssistanceDate"].Width = 410;
+            //    dgClient.Columns["FullName"].Width = 410;
+             //   dgClient.Columns["LastAssistanceDate"].Width = 410;
 
                 dgClient.Columns["Eligibility"].Visible = false;
 
@@ -607,7 +608,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 if (dgClient.Columns.Contains("DateOfBirth"))
                 {
                     dgClient.Columns["DateOfBirth"].HeaderText = "Date of Birth";
-                    dgClient.Columns["DateOfBirth"].Width = 285;
+                  //  dgClient.Columns["DateOfBirth"].Width = 285;
                     dgClient.Columns["DateOfBirth"].DefaultCellStyle.Format = "MMMM dd, yyyy";
 
                     // Move "Date of Birth" after "Eligibility"
@@ -667,13 +668,13 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             }
 
             dgBenef.Columns["FullName"].HeaderText = "Beneficiary Name";
-            dgBenef.Columns["FullName"].Width = 280;
+            //dgBenef.Columns["FullName"].Width = 280;
             dgBenef.Columns["ContactNumber"].HeaderText = "Contact";
-            dgBenef.Columns["ContactNumber"].Width = 240;
+            //dgBenef.Columns["ContactNumber"].Width = 240;
             dgBenef.Columns["LastAssistanceDate"].HeaderText = "Last Assistance Date";
-            dgBenef.Columns["LastAssistanceDate"].Width = 280;
+            //dgBenef.Columns["LastAssistanceDate"].Width = 280;
             dgBenef.Columns["Eligibility"].HeaderText = "Eligibility";
-            dgBenef.Columns["Eligibility"].Width = 250;
+            //dgBenef.Columns["Eligibility"].Width = 250;
             dgBenef.Columns["LastAssistanceDate"].DefaultCellStyle.Format = "MMMM dd, yyyy";
 
             // Ensure "Date of Birth" is always visible for Admin Clerk 1
@@ -691,7 +692,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 }
 
                 dgBenef.Columns["DateOfBirth"].HeaderText = "Date of Birth";
-                dgBenef.Columns["DateOfBirth"].Width = 282;
+             //   dgBenef.Columns["DateOfBirth"].Width = 282;
                 dgBenef.Columns["DateOfBirth"].DefaultCellStyle.Format = "MMMM dd, yyyy";
 
                 // Ensure "Date of Birth" is placed AFTER "Eligibility"
@@ -774,6 +775,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             switch (role)
             {
                 case "Admin Clerk 3":
+                   
                     Step3Form step3Form = new Step3Form(role); // Pass role to Step3Form
                     loadform(step3Form); // Load the form in the mainPanel
                     break;
@@ -871,11 +873,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     string buttonText = dgClient.Rows[e.RowIndex].Cells["Control"].Value.ToString();
 
                     // Check eligibility before proceeding
-                    if (eligibility == "Not Eligible")
-                    {
-                        // MessageBox.Show($"{fullName} is not eligible for this action.", "Eligibility Restriction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    //if (eligibility == "Not Eligible")
+                    //{
+                    //    // MessageBox.Show($"{fullName} is not eligible for this action.", "Eligibility Restriction", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    return;
+                    //}
 
                     HandleButtonClick(buttonText, clientId, fullName);
                 }

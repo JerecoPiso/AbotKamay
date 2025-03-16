@@ -212,6 +212,7 @@
             btnSave = new Button();
             btnBack = new Button();
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            label49 = new Label();
             mainPanel.SuspendLayout();
             tabControl.SuspendLayout();
             tab1Client.SuspendLayout();
@@ -226,6 +227,7 @@
             groupBox4.SuspendLayout();
             grpbCivilStatus.SuspendLayout();
             grpbSex.SuspendLayout();
+            panel9.SuspendLayout();
             tab3BenFam.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgFamily).BeginInit();
@@ -499,6 +501,7 @@
             label58.Size = new Size(131, 25);
             label58.TabIndex = 249;
             label58.Text = "ID Number:";
+            label58.Visible = false;
             // 
             // txtIdNum
             // 
@@ -508,6 +511,7 @@
             txtIdNum.Name = "txtIdNum";
             txtIdNum.Size = new Size(208, 28);
             txtIdNum.TabIndex = 248;
+            txtIdNum.Visible = false;
             // 
             // label57
             // 
@@ -1677,9 +1681,9 @@
             chkbOther.Font = new Font("Verdana", 12F);
             chkbOther.Location = new Point(844, 141);
             chkbOther.Name = "chkbOther";
-            chkbOther.Size = new Size(189, 29);
+            chkbOther.Size = new Size(102, 29);
             chkbOther.TabIndex = 30;
-            chkbOther.Text = "Others, Specify";
+            chkbOther.Text = "Others";
             chkbOther.UseVisualStyleBackColor = false;
             chkbOther.CheckedChanged += chkbOther_CheckedChanged;
             // 
@@ -2013,6 +2017,7 @@
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(224, 224, 224);
+            panel9.Controls.Add(label49);
             panel9.Location = new Point(22, 117);
             panel9.Name = "panel9";
             panel9.Size = new Size(1418, 74);
@@ -2534,6 +2539,15 @@
             mySqlCommand1.EnableCaching = false;
             mySqlCommand1.Transaction = null;
             // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.Location = new Point(943, 23);
+            label49.Name = "label49";
+            label49.Size = new Size(77, 25);
+            label49.TabIndex = 0;
+            label49.Text = "Specify";
+            // 
             // Step3Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -2569,6 +2583,8 @@
             grpbCivilStatus.PerformLayout();
             grpbSex.ResumeLayout(false);
             grpbSex.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             tab3BenFam.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -2767,5 +2783,6 @@
         private Panel panel10;
         private Panel panel9;
         private Panel panel14;
+        private Label label49;
     }
 }

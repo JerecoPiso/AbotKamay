@@ -47,12 +47,9 @@
             panel3 = new Panel();
             tabPage2 = new TabPage();
             panel2 = new Panel();
-            rBtnGL = new RadioButton();
             rBtnOther = new RadioButton();
-            rBtnCash = new RadioButton();
             label2 = new Label();
             button5 = new Button();
-            txtAmount = new TextBox();
             txtOther = new TextBox();
             label1 = new Label();
             rBtnCounselling = new RadioButton();
@@ -62,6 +59,11 @@
             txtReferralSpecify = new TextBox();
             rBtnLegalAssistance = new RadioButton();
             groupBox4 = new GroupBox();
+            panelPrintForm = new Panel();
+            close = new PictureBox();
+            rer = new RadioButton();
+            coe = new RadioButton();
+            gis = new RadioButton();
             txtSpecify = new TextBox();
             groupBox6 = new GroupBox();
             txtbValuePesos = new TextBox();
@@ -88,6 +90,9 @@
             panel7 = new Panel();
             panel6 = new Panel();
             panel5 = new Panel();
+            txtAmount = new TextBox();
+            rBtnGL = new RadioButton();
+            rBtnCash = new RadioButton();
             panel1 = new Panel();
             lblGetName = new Label();
             label9 = new Label();
@@ -98,11 +103,14 @@
             panel2.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
+            panelPrintForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)close).BeginInit();
             groupBox6.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox9.SuspendLayout();
             panel4.SuspendLayout();
             panel9.SuspendLayout();
+            panel5.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -192,6 +200,7 @@
             groupBox12.Size = new Size(1469, 775);
             groupBox12.TabIndex = 197;
             groupBox12.TabStop = false;
+            groupBox12.Enter += groupBox12_Enter;
             // 
             // label8
             // 
@@ -286,12 +295,9 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(rBtnGL);
             panel2.Controls.Add(rBtnOther);
-            panel2.Controls.Add(rBtnCash);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(button5);
-            panel2.Controls.Add(txtAmount);
             panel2.Controls.Add(txtOther);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(rBtnCounselling);
@@ -316,19 +322,6 @@
             panel2.Size = new Size(1478, 782);
             panel2.TabIndex = 42;
             // 
-            // rBtnGL
-            // 
-            rBtnGL.AutoSize = true;
-            rBtnGL.BackColor = Color.FromArgb(224, 224, 224);
-            rBtnGL.Font = new Font("Verdana", 9F);
-            rBtnGL.Location = new Point(1329, 177);
-            rBtnGL.Name = "rBtnGL";
-            rBtnGL.Size = new Size(49, 22);
-            rBtnGL.TabIndex = 244;
-            rBtnGL.TabStop = true;
-            rBtnGL.Text = "GL";
-            rBtnGL.UseVisualStyleBackColor = false;
-            // 
             // rBtnOther
             // 
             rBtnOther.AutoSize = true;
@@ -342,19 +335,6 @@
             rBtnOther.Text = "Other (Specify)";
             rBtnOther.UseVisualStyleBackColor = false;
             rBtnOther.CheckedChanged += rBtnOther_CheckedChanged;
-            // 
-            // rBtnCash
-            // 
-            rBtnCash.AutoSize = true;
-            rBtnCash.BackColor = Color.FromArgb(224, 224, 224);
-            rBtnCash.Font = new Font("Verdana", 9F);
-            rBtnCash.Location = new Point(1252, 177);
-            rBtnCash.Name = "rBtnCash";
-            rBtnCash.Size = new Size(66, 22);
-            rBtnCash.TabIndex = 243;
-            rBtnCash.TabStop = true;
-            rBtnCash.Text = "Cash";
-            rBtnCash.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -383,16 +363,6 @@
             button5.Text = "   PRINT";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
-            // 
-            // txtAmount
-            // 
-            txtAmount.Font = new Font("Verdana", 10.2F);
-            txtAmount.Location = new Point(570, 175);
-            txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(262, 28);
-            txtAmount.TabIndex = 240;
-            txtAmount.KeyPress += txtAmount_KeyPress;
-            txtAmount.Leave += txtAmount_Leave;
             // 
             // txtOther
             // 
@@ -487,6 +457,7 @@
             // groupBox4
             // 
             groupBox4.BackColor = Color.FromArgb(224, 224, 224);
+            groupBox4.Controls.Add(panelPrintForm);
             groupBox4.Controls.Add(txtSpecify);
             groupBox4.Font = new Font("Microsoft Sans Serif", 10.2F);
             groupBox4.Location = new Point(338, 238);
@@ -495,6 +466,68 @@
             groupBox4.TabIndex = 248;
             groupBox4.TabStop = false;
             groupBox4.Text = "Specify";
+            // 
+            // panelPrintForm
+            // 
+            panelPrintForm.BackColor = Color.RoyalBlue;
+            panelPrintForm.Controls.Add(close);
+            panelPrintForm.Controls.Add(rer);
+            panelPrintForm.Controls.Add(coe);
+            panelPrintForm.Controls.Add(gis);
+            panelPrintForm.Location = new Point(157, 24);
+            panelPrintForm.Name = "panelPrintForm";
+            panelPrintForm.Size = new Size(467, 136);
+            panelPrintForm.TabIndex = 245;
+            panelPrintForm.Visible = false;
+            // 
+            // close
+            // 
+            close.Image = (Image)resources.GetObject("close.Image");
+            close.Location = new Point(428, 2);
+            close.Name = "close";
+            close.Size = new Size(36, 37);
+            close.SizeMode = PictureBoxSizeMode.StretchImage;
+            close.TabIndex = 3;
+            close.TabStop = false;
+            close.Click += close_Click;
+            // 
+            // rer
+            // 
+            rer.AutoSize = true;
+            rer.ForeColor = SystemColors.ControlLightLight;
+            rer.Location = new Point(80, 86);
+            rer.Name = "rer";
+            rer.Size = new Size(324, 24);
+            rer.TabIndex = 2;
+            rer.TabStop = true;
+            rer.Text = "REIMBURSEMENT EXENSE RECEIPT";
+            rer.UseVisualStyleBackColor = true;
+            rer.CheckedChanged += rer_CheckedChanged;
+            // 
+            // coe
+            // 
+            coe.ForeColor = SystemColors.ControlLightLight;
+            coe.Location = new Point(80, 46);
+            coe.Name = "coe";
+            coe.Size = new Size(373, 24);
+            coe.TabIndex = 1;
+            coe.TabStop = true;
+            coe.Text = "CERTIFICATE OF ELIGIBILITY";
+            coe.UseVisualStyleBackColor = true;
+            coe.CheckedChanged += coe_CheckedChanged;
+            // 
+            // gis
+            // 
+            gis.AutoSize = true;
+            gis.ForeColor = SystemColors.ControlLightLight;
+            gis.Location = new Point(80, 10);
+            gis.Name = "gis";
+            gis.Size = new Size(235, 24);
+            gis.TabIndex = 0;
+            gis.TabStop = true;
+            gis.Text = "GENERAL INTAKE SHEET";
+            gis.UseVisualStyleBackColor = true;
+            gis.CheckedChanged += gis_CheckedChanged;
             // 
             // txtSpecify
             // 
@@ -682,6 +715,7 @@
             // btnStep4Save
             // 
             btnStep4Save.BackColor = Color.FromArgb(0, 99, 177);
+            btnStep4Save.Enabled = false;
             btnStep4Save.FlatAppearance.BorderSize = 0;
             btnStep4Save.FlatStyle = FlatStyle.Flat;
             btnStep4Save.Font = new Font("Arial Rounded MT Bold", 9F);
@@ -767,14 +801,52 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(1418, 126);
             panel6.TabIndex = 277;
+            panel6.Paint += panel6_Paint;
             // 
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(224, 224, 224);
+            panel5.Controls.Add(txtAmount);
+            panel5.Controls.Add(rBtnGL);
+            panel5.Controls.Add(rBtnCash);
             panel5.Location = new Point(19, 156);
             panel5.Name = "panel5";
             panel5.Size = new Size(1418, 65);
             panel5.TabIndex = 276;
+            // 
+            // txtAmount
+            // 
+            txtAmount.Font = new Font("Verdana", 10.2F);
+            txtAmount.Location = new Point(556, 17);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(262, 28);
+            txtAmount.TabIndex = 240;
+            txtAmount.KeyPress += txtAmount_KeyPress;
+            txtAmount.Leave += txtAmount_Leave;
+            // 
+            // rBtnGL
+            // 
+            rBtnGL.AutoSize = true;
+            rBtnGL.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rBtnGL.Location = new Point(1331, 20);
+            rBtnGL.Name = "rBtnGL";
+            rBtnGL.Size = new Size(60, 29);
+            rBtnGL.TabIndex = 1;
+            rBtnGL.TabStop = true;
+            rBtnGL.Text = "GL";
+            rBtnGL.UseVisualStyleBackColor = true;
+            // 
+            // rBtnCash
+            // 
+            rBtnCash.AutoSize = true;
+            rBtnCash.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rBtnCash.Location = new Point(1235, 20);
+            rBtnCash.Name = "rBtnCash";
+            rBtnCash.Size = new Size(82, 29);
+            rBtnCash.TabIndex = 0;
+            rBtnCash.TabStop = true;
+            rBtnCash.Text = "Cash";
+            rBtnCash.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -787,6 +859,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1531, 925);
             panel1.TabIndex = 250;
+            panel1.Paint += panel1_Paint;
             // 
             // lblGetName
             // 
@@ -835,6 +908,9 @@
             groupBox2.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            panelPrintForm.ResumeLayout(false);
+            panelPrintForm.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)close).EndInit();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             groupBox7.ResumeLayout(false);
@@ -845,6 +921,8 @@
             panel4.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -884,8 +962,6 @@
         private CheckBox chkTranspo;
         private CheckBox chkBurial;
         private CheckBox chkMedical;
-        private RadioButton rBtnGL;
-        private RadioButton rBtnCash;
         private Label label2;
         private TextBox txtAmount;
         private Label label1;
@@ -896,7 +972,6 @@
         private TextBox txtReferralSpecify;
         private RadioButton rBtnCounselling;
         private Button btnBack;
-        private Button btnStep4Save;
         private Panel panel1;
         private Button btnNextToReco;
         private Label label8;
@@ -912,5 +987,13 @@
         private Panel panel7;
         private Label label9;
         private Label lblGetName;
+        private RadioButton rBtnCash;
+        private RadioButton rBtnGL;
+        private RadioButton rer;
+        private RadioButton coe;
+        private RadioButton gis;
+        public Button btnStep4Save;
+        private PictureBox close;
+        public Panel panelPrintForm;
     }
 }
