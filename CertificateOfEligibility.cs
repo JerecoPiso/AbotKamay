@@ -15,13 +15,18 @@ using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
+using System.Windows.Forms.VisualStyles;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
+using System.Security.Cryptography;
 
 namespace Abot_Kamay_Tracking_and_Queuing_System
 {
-
+   
 
     public partial class CertificateOfEligibility : Form
     {
+        FigureToWords word = new FigureToWords();
         private Step4Form home;
         public CertificateOfEligibility(Step4Form home)
         {
@@ -95,14 +100,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 ai.specify,
                 ai.material_specify 
                 FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id 
-                LEFT JOIN assistanceinformation as ai  ON ci.client_id = ai.client_id
+                RIGHT JOIN assistanceinformation as ai  ON ci.client_id = ai.client_id
 
-                WHERE ci.client_id = @client_id ORDER BY bi.beneficiary_id DESC LIMIT 1";
+                WHERE ci.client_id = @client_id ORDER BY ai.id DESC LIMIT 1";
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(client, conn))
                 {
-                    cmd.Parameters.AddWithValue("@client_id", 1);
+                    cmd.Parameters.AddWithValue("@client_id", this.home.clientId);
 
                     using (MySqlDataReader rd = cmd.ExecuteReader())
                     {
@@ -124,7 +129,20 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                             currentDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
                             age.Text = rd["bage"].ToString();
                             //amount2.Text = rd["amount"].ToString();
+                            //amountinwords.Text = word.Convert(Int32.Parse(rd["amount"].ToString()));
 
+                            decimal number;
+                            if (decimal.TryParse(rd["amount"].ToString(), NumberStyles.Number, CultureInfo.InvariantCulture, out number))
+                            {
+                              string words = word.Convert(number); ;
+                                amountinwords.Text = words;
+                                amount2.Text = words;
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input format.");
+                            }
                             amountFig1.Text = rd["amount"].ToString();
                             amountFig2.Text = rd["amount"].ToString();
                             assistance1.Text = rd["relationship_to_beneficiary"].ToString() + " " + rd["blname"].ToString() + " " + rd["bfname"].ToString();

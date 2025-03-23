@@ -127,7 +127,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     cmd.Parameters.AddWithValue("@beneficiary_id", bid);
                     cmd.Parameters.AddWithValue("@problem", txtProblem.Text);
                     cmd.Parameters.AddWithValue("@assessment", txtAssessment.Text);
-                    cmd.Parameters.AddWithValue("@category", cmbClientCateg.SelectedIndex);
+                    cmd.Parameters.AddWithValue("@category", cmbClientCateg.SelectedIndex  + 1);
                     cmd.Parameters.AddWithValue("@subCategory", txtClientSub.Text);
 
                     cmd.ExecuteNonQuery();
@@ -170,10 +170,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                         //connection.Open();
                         cmd.ExecuteNonQuery();
                     }
-
+                    btnStep4Save.Enabled = false;
                     MessageBox.Show("Assistance information and Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MainForm main = (MainForm)Application.OpenForms["MainForm"];
-                    main.btnHome.PerformClick();
+                    MessageBox.Show("Please print now all the 3 forms", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MainForm main = (MainForm)Application.OpenForms["MainForm"];
+                    //main.btnHome.PerformClick();
                 }
                 //MessageBox.Show("Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

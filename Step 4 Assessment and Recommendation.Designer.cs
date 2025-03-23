@@ -715,7 +715,6 @@
             // btnStep4Save
             // 
             btnStep4Save.BackColor = Color.FromArgb(0, 99, 177);
-            btnStep4Save.Enabled = false;
             btnStep4Save.FlatAppearance.BorderSize = 0;
             btnStep4Save.FlatStyle = FlatStyle.Flat;
             btnStep4Save.Font = new Font("Arial Rounded MT Bold", 9F);
@@ -963,7 +962,6 @@
         private CheckBox chkBurial;
         private CheckBox chkMedical;
         private Label label2;
-        private TextBox txtAmount;
         private Label label1;
         private RadioButton rBtnOther;
         private TextBox txtOther;
@@ -995,5 +993,6 @@
         public Button btnStep4Save;
         private PictureBox close;
         public Panel panelPrintForm;
+        public TextBox txtAmount;
     }
 }

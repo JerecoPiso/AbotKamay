@@ -45,8 +45,15 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 bi.barangay as bbarangay,
                 bi.street_purok as bstreet,
                 bi.civil_status as bcivil,
-                bi.civil_status_other as bcivilother 
-                FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id WHERE ci.client_id = @client_id";
+                bi.civil_status_other as bcivilother,
+                ai.problem_presented,
+                ai.social_worker_assessment,
+                ai.client_category,
+                ai.client_sub_category 
+                FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id 
+                LEFT JOIN assessmentinformation AS ai ON bi.beneficiary_id = ai.beneficiary_id
+
+                WHERE ci.client_id = @client_id ORDER BY bi.client_id, ai.assessment_id DESC LIMIT 1";
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(client, conn))
@@ -57,10 +64,20 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     {
                         if (rd.Read())
                         {
+
                             lname.Text = rd["last_name"].ToString();
                             fname.Text = rd["first_name"].ToString();
                             mname.Text = rd["middle_name"].ToString();
                             ext.Text = rd["ext_name"].ToString();
+                            if (rd["sex"].ToString().Equals("Male"))
+                            {
+                                gmale.Checked = true;
+                            }
+                            else
+                            {
+                                gfemale.Checked = true;
+                            }
+                              
                             philhealthno.Text = rd["id_number"].ToString();
                             placeofbirth.Text = rd["birth_place"].ToString(); lname.Text = rd["last_name"].ToString();
                             relationshiptobeneficiary.Text = rd["relationship_to_beneficiary"].ToString();
@@ -68,9 +85,12 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                             contactno.Text = rd["contact_number"].ToString();
                             occupation.Text = rd["skills_occupation"].ToString();
                             referringparty.Text = rd["referring_party"].ToString();
-                            //dateofbirth.Text = new DateTime(rd["date_of_birth"].ToString()).ToString("yyyyy-MM-dd");
+                            dateofbirth.Text = rd["date_of_birth"].ToString();
                             age.Text = rd["age"].ToString();
                             presentaddress.Text = rd["street_purok"].ToString() + " " + rd["barangay"].ToString() + " " + rd["district"].ToString() + " " + rd["city_municipality"].ToString() + " " + rd["province"].ToString() + " " + rd["region"].ToString();
+                            philhealthno.Text = rd["philhealth_no"].ToString();
+                            referringparty.Text = rd["referring_party"].ToString();
+                            contactno.Text = rd["contact_number"].ToString();
                             //highesteduc.Text = rd["contact_number"].ToString();
                             blname.Text = rd["blname"].ToString();
                             bfname.Text = rd["bfname"].ToString();
@@ -79,6 +99,12 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                             bage.Text = rd["bage"].ToString();
                             bpob.Text = rd["bbirth_place"].ToString();
                             bcontact.Text = rd["bcontact"].ToString();
+
+                            problem_presented.Text = rd["problem_presented"].ToString();
+                            social_worker_assessment.Text = rd["social_worker_assessment"].ToString();
+                            client_sub.Text = rd["client_sub_category"].ToString();
+
+                            checkClientCategory(Int32.Parse(rd["client_category"].ToString()));
                             //MessageBox.Show(rd["last_name"].ToString());
                         }
                     }
@@ -86,7 +112,35 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             }
 
         }
+        private void checkClientCategory(int category)
+        {
+            switch (category)
+            {
+                case 1:
+                    chb_client1.Checked = true;
+                    break;
+                case 2:
+                    chb_client2.Checked = true;
 
+                    break;
+                case 3:
+                    chb_client3.Checked = true;
+
+                    break;
+                case 4:
+                    chb_client4.Checked = true;
+
+                    break;
+                case 5:
+                    chb_client5.Checked = true;
+
+                    break;
+                case 6:
+                    chb_client6.Checked = true;
+
+                    break;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -145,6 +199,31 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             {
                 btnPrint.PerformClick();
             }
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void highesteduc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gfemale_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

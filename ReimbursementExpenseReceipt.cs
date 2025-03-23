@@ -16,16 +16,19 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Drawing.Printing;
+using System.Globalization;
 
 namespace Abot_Kamay_Tracking_and_Queuing_System
 {
     public partial class ReimbursementExpenseReceipt : Form
     {
         private Step4Form home;
-    
+        FigureToWords word = new FigureToWords();
+
 
         public ReimbursementExpenseReceipt(Step4Form home)
         {
+
             InitializeComponent();
             this.home = home;
             date.Text = "Date: " + DateTime.Now.ToString("yyyy-MM-dd");
@@ -53,8 +56,13 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 bi.barangay as bbarangay,
                 bi.street_purok as bstreet,
                 bi.civil_status as bcivil,
-                bi.civil_status_other as bcivilother 
-                FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id WHERE ci.client_id = @client_id ORDER BY bi.beneficiary_id DESC LIMIT 1";
+                bi.civil_status_other as bcivilother, 
+                
+                ai.amount
+
+                FROM clientinformation AS ci RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id 
+                LEFT JOIN assistanceinformation AS ai ON bi.beneficiary_id = ai.beneficiary_id
+                WHERE ci.client_id = @client_id ORDER BY bi.beneficiary_id DESC LIMIT 1";
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(client, conn))
@@ -65,7 +73,17 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     {
                         if (rd.Read())
                         {
-                           // MessageBox.Show(rd["last_name"].ToString());
+                            decimal number;
+                            if (decimal.TryParse(rd["amount"].ToString(), NumberStyles.Number, CultureInfo.InvariantCulture, out number))
+                            {
+                                string words = word.Convert(number); ;
+                                amountWords.Text = words;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid input format.");
+                            }
+                            amountFig.Text = rd["amount"].ToString();
                             clientName.Text = rd["last_name"].ToString() + " " + rd["first_name"].ToString() + " " + rd["middle_name"].ToString();
                             clientAddess.Text = rd["street_purok"].ToString() + " " + rd["barangay"].ToString() + " " + rd["district"].ToString() + " " + rd["city_municipality"].ToString() + " " + rd["province"].ToString() + " " + rd["region"].ToString();
                         }

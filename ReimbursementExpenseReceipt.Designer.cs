@@ -31,9 +31,16 @@
             btnPrint = new Button();
             form = new Panel();
             panel3 = new Panel();
-            label2 = new Label();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
+            label29 = new Label();
             amountFig = new Label();
+            panel5 = new Panel();
+            panel1 = new Panel();
             amountWords = new Label();
+            label2 = new Label();
             sdoName = new Label();
             label27 = new Label();
             label26 = new Label();
@@ -54,6 +61,8 @@
             label14 = new Label();
             label5 = new Label();
             panel4 = new Panel();
+            panel11 = new Panel();
+            panel10 = new Panel();
             textBox2 = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             textBox1 = new TextBox();
@@ -68,15 +77,6 @@
             label3 = new Label();
             date = new Label();
             label1 = new Label();
-            panel1 = new Panel();
-            panel5 = new Panel();
-            label29 = new Label();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            panel8 = new Panel();
-            panel9 = new Panel();
-            panel10 = new Panel();
-            panel11 = new Panel();
             form.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -139,16 +139,46 @@
             panel3.TabIndex = 18;
             panel3.Paint += panel3_Paint;
             // 
-            // label2
+            // panel9
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(302, 186);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 28);
-            label2.TabIndex = 105;
-            label2.Text = "AICS";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            panel9.BorderStyle = BorderStyle.FixedSingle;
+            panel9.Location = new Point(24, 349);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(565, 2);
+            panel9.TabIndex = 112;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Location = new Point(24, 291);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(565, 2);
+            panel8.TabIndex = 111;
+            // 
+            // panel7
+            // 
+            panel7.BorderStyle = BorderStyle.FixedSingle;
+            panel7.Location = new Point(456, 151);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(128, 2);
+            panel7.TabIndex = 110;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Location = new Point(50, 152);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(361, 2);
+            panel6.TabIndex = 109;
+            // 
+            // label29
+            // 
+            label29.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label29.Location = new Point(413, 136);
+            label29.Name = "label29";
+            label29.Size = new Size(48, 21);
+            label29.TabIndex = 108;
+            label29.Text = "(Php)";
             // 
             // amountFig
             // 
@@ -159,14 +189,42 @@
             amountFig.TabIndex = 104;
             amountFig.Text = "-";
             // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Location = new Point(24, 95);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(475, 2);
+            panel5.TabIndex = 107;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Location = new Point(153, 42);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(438, 2);
+            panel1.TabIndex = 106;
+            // 
             // amountWords
             // 
             amountWords.AutoSize = true;
-            amountWords.Location = new Point(53, 129);
+            amountWords.Font = new Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            amountWords.Location = new Point(53, 132);
             amountWords.Name = "amountWords";
-            amountWords.Size = new Size(15, 20);
+            amountWords.Size = new Size(13, 17);
             amountWords.TabIndex = 103;
             amountWords.Text = "-";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(302, 186);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 28);
+            label2.TabIndex = 105;
+            label2.Text = "AICS";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // sdoName
             // 
@@ -292,7 +350,7 @@
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label14);
             panel2.Controls.Add(label5);
-            panel2.Location = new Point(182, 785);
+            panel2.Location = new Point(182, 780);
             panel2.Name = "panel2";
             panel2.Size = new Size(616, 263);
             panel2.TabIndex = 17;
@@ -363,10 +421,26 @@
             panel4.Controls.Add(label6);
             panel4.Controls.Add(label28);
             panel4.Controls.Add(label4);
-            panel4.Location = new Point(182, 521);
+            panel4.Location = new Point(182, 518);
             panel4.Name = "panel4";
             panel4.Size = new Size(616, 262);
             panel4.TabIndex = 16;
+            // 
+            // panel11
+            // 
+            panel11.BorderStyle = BorderStyle.FixedSingle;
+            panel11.Location = new Point(85, 116);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(497, 2);
+            panel11.TabIndex = 113;
+            // 
+            // panel10
+            // 
+            panel10.BorderStyle = BorderStyle.FixedSingle;
+            panel10.Location = new Point(139, 78);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(443, 2);
+            panel10.TabIndex = 112;
             // 
             // textBox2
             // 
@@ -489,79 +563,6 @@
             label1.TabIndex = 13;
             label1.Text = "REIMBURSEMENT EXPENSE RECEIPT";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Location = new Point(153, 42);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(438, 2);
-            panel1.TabIndex = 106;
-            // 
-            // panel5
-            // 
-            panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Location = new Point(24, 95);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(475, 2);
-            panel5.TabIndex = 107;
-            // 
-            // label29
-            // 
-            label29.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.Location = new Point(413, 136);
-            label29.Name = "label29";
-            label29.Size = new Size(48, 21);
-            label29.TabIndex = 108;
-            label29.Text = "(Php)";
-            // 
-            // panel6
-            // 
-            panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Location = new Point(50, 152);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(361, 2);
-            panel6.TabIndex = 109;
-            // 
-            // panel7
-            // 
-            panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Location = new Point(456, 151);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(128, 2);
-            panel7.TabIndex = 110;
-            // 
-            // panel8
-            // 
-            panel8.BorderStyle = BorderStyle.FixedSingle;
-            panel8.Location = new Point(24, 291);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(565, 2);
-            panel8.TabIndex = 111;
-            // 
-            // panel9
-            // 
-            panel9.BorderStyle = BorderStyle.FixedSingle;
-            panel9.Location = new Point(24, 349);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(565, 2);
-            panel9.TabIndex = 112;
-            // 
-            // panel10
-            // 
-            panel10.BorderStyle = BorderStyle.FixedSingle;
-            panel10.Location = new Point(139, 78);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(443, 2);
-            panel10.TabIndex = 112;
-            // 
-            // panel11
-            // 
-            panel11.BorderStyle = BorderStyle.FixedSingle;
-            panel11.Location = new Point(85, 116);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(497, 2);
-            panel11.TabIndex = 113;
             // 
             // ReimbursementExpenseReceipt
             // 

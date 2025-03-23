@@ -31,6 +31,7 @@
             label1 = new Label();
             label2 = new Label();
             form = new Panel();
+            amountinwords = new Label();
             panel18 = new Panel();
             panel17 = new Panel();
             panel16 = new Panel();
@@ -158,6 +159,7 @@
             // form
             // 
             form.BackColor = SystemColors.ControlLightLight;
+            form.Controls.Add(amountinwords);
             form.Controls.Add(panel18);
             form.Controls.Add(panel17);
             form.Controls.Add(panel16);
@@ -267,6 +269,16 @@
             form.Size = new Size(1022, 1151);
             form.TabIndex = 0;
             form.Paint += panel1_Paint;
+            // 
+            // amountinwords
+            // 
+            amountinwords.AutoSize = true;
+            amountinwords.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            amountinwords.Location = new Point(179, 518);
+            amountinwords.Name = "amountinwords";
+            amountinwords.Size = new Size(13, 17);
+            amountinwords.TabIndex = 137;
+            amountinwords.Text = "-";
             // 
             // panel18
             // 
@@ -1391,5 +1403,6 @@
         private Panel panel16;
         private Panel panel18;
         private Panel panel17;
+        private Label amountinwords;
     }
 }
