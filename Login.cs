@@ -22,10 +22,10 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void LoginForm_Load(object sender, EventArgs e)
         {
             timeDateTimer.Start();
-            txtUsername.Text = "clerk3";
-            txtPassword.Text = "Cl3rk333";
-            txtUsername.Text = "socialworker1";
-            txtPassword.Text = "Worker1p@55";
+            txtUsername.Text = "socialworker3";
+            txtPassword.Text = "Worker3p@55";
+            //txtUsername.Text = "administrator";
+            //txtPassword.Text = "Adminp@55";
 
             this.KeyDown += LoginForm_KeyDown;
             txtPassword.KeyDown += txtPassword_KeyDown; // Trigger login and prevent newline
@@ -111,12 +111,13 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             Form mainForm;
             Form inputQueueForm;
-
+         
             switch (userRole)
             {
                 case "Admin Clerk 2":
                     inputQueueForm = new InputQueueForm();
                     inputQueueForm.Show();
+                  //  new QueueForm().Show();
                     break;
                 case "Admin":
                 case "Admin Clerk 1":

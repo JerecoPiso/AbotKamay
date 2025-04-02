@@ -409,6 +409,7 @@
             panelHeader.Name = "panelHeader";
             panelHeader.Size = new Size(1920, 75);
             panelHeader.TabIndex = 19;
+            panelHeader.Paint += panelHeader_Paint;
             // 
             // minimize
             // 

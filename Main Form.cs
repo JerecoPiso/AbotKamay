@@ -208,15 +208,16 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             //OR...
 
             // ✅ Check if QueueForm is open, if not, open it automatically
-            if (!HomeForm.isQueueFormOpen)
-            {
-                QueueForm queueForm = new QueueForm();
-                queueForm.Show();
-                HomeForm.isQueueFormOpen = true; // Mark it as open
-                System.Threading.Thread.Sleep(500); // Delay for smooth UI transition
-            }
+            //if (!HomeForm.isQueueFormOpen)
+            //{
+               
+            //    QueueForm queueForm = new QueueForm();
+            //    queueForm.Show();
+            //    HomeForm.isQueueFormOpen = true; // Mark it as open
+            //    System.Threading.Thread.Sleep(500); // Delay for smooth UI transition
+            //}
 
-            // If QueueForm is open, check if the queue is already running
+           // If QueueForm is open, check if the queue is already running
             if (!isQueueRunning)
             {
                 DialogResult result = MessageBox.Show("Do you want to start the queue?", "Start Queue", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -289,8 +290,13 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             AddUserForm addUserForm = new AddUserForm();
-            addUserForm.ShowDialog(); // Use ShowDialog for a modal window
+            addUserForm.TopLevel = false;
+            mainPanel.Controls.Add(addUserForm);
+            // addUserForm.Dock = DockStyle.Fill;
+            addUserForm.Location = new Point((mainPanel.Width - addUserForm.Width) / 2, (mainPanel.Height - addUserForm.Height) / 2);
+            addUserForm.Show(); // Use ShowDialog for a modal window
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -311,6 +317,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void button1_Click_1(object sender, EventArgs e)
         {
             btnHome.PerformClick();
+        }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

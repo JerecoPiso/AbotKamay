@@ -156,7 +156,7 @@
             menuStripSettings.Location = new Point(3, 0);
             menuStripSettings.Name = "menuStripSettings";
             menuStripSettings.Padding = new Padding(6, 10, 0, 10);
-            menuStripSettings.Size = new Size(191, 49);
+            menuStripSettings.Size = new Size(341, 49);
             menuStripSettings.TabIndex = 0;
             // 
             // profileToolStripMenuItem
@@ -183,14 +183,15 @@
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(165, 30);
+            viewToolStripMenuItem.Size = new Size(224, 30);
             viewToolStripMenuItem.Text = "View";
             // 
             // createToolStripMenuItem
             // 
             createToolStripMenuItem.Name = "createToolStripMenuItem";
-            createToolStripMenuItem.Size = new Size(165, 30);
+            createToolStripMenuItem.Size = new Size(224, 30);
             createToolStripMenuItem.Text = "Create";
+            createToolStripMenuItem.Click += createToolStripMenuItem_Click;
             // 
             // flowLayoutPanel1
             // 

@@ -40,7 +40,7 @@ public class FigureToWords
             result.Append(" Cents");
         }
 
-        return result.ToString().Trim();
+        return result.ToString().Trim() + (result.Length > 0 ? " pesos only" : "");
     }
 
     private  string ConvertGroup(int number)

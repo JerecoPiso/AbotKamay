@@ -29,7 +29,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             InitializeComponent();
 
             queueUpdateTimer = new System.Timers.Timer(1000); // Update every 2 second
-            queueUpdateTimer.Elapsed += (sender, e) => LoadQueueNumbers();
+            queueUpdateTimer.Elapsed += (sender, e) => LoadQueueNumbers(); LoadQueueNumbers();
             queueUpdateTimer.AutoReset = true;
             queueUpdateTimer.Enabled = true;
         }
@@ -50,6 +50,37 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 {
                     lblNumInput.Text = result?.ToString() ?? "-";
                 }
+             
+            }
+            using (MySqlConnection conn2 = DatabaseConnection.GetConnection())
+            {
+                string query = "SELECT queue_number FROM Queue WHERE step = 2 AND status = 'Waiting' ORDER BY queue_number ASC";
+                MySqlCommand cmd = new MySqlCommand(query, conn2);
+                MySqlDataReader rd = cmd.ExecuteReader();
+         
+                if (listWaiting.InvokeRequired)
+                {
+                    listWaiting.Invoke(new Action(() => listWaiting.Items.Clear()));
+                }
+                else
+                {
+                    listWaiting.Items.Clear();
+                }
+
+                while (rd.Read())
+                {
+                    // Ensure you're invoking only if the control is not being disposed.
+                    if (listWaiting.InvokeRequired)
+                    {
+                        listWaiting.Invoke(new Action(() => listWaiting.Items.Add(rd["queue_number"])));
+                    }
+                    else
+                    {
+                        // This case happens if you're already on the UI thread.
+                        listWaiting.Items.Add(rd["queue_number"]);
+                    }
+                }
+
             }
         }
         

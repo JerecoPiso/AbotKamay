@@ -163,6 +163,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

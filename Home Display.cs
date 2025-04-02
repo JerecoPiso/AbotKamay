@@ -1,5 +1,6 @@
 ﻿using Abot_Kamay_Tracking_and_Queuing_System.Utilities;
 using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -81,24 +82,37 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             string query = @"
             SELECT 
-                client_id AS ClientID,
-                CONCAT(last_name, ' ', first_name) AS FullName,
-                contact_number AS ContactNumber,
-                last_assistance_date AS LastAssistanceDate,";
+                ci.client_id AS ClientID,
+                CONCAT(ci.last_name, ' ', ci.first_name) AS FullName,
+                ci.contact_number AS ContactNumber,
+                ci.last_assistance_date AS LastAssistanceDate,";
 
             // Add date of birth for Admin Clerk 1
             if (role == "Admin Clerk 1")
             {
-                query += "date_of_birth AS DateOfBirth,";
+                query += "ci.date_of_birth AS DateOfBirth,";
             }
 
             query += @"
                 CASE 
-                    WHEN DATEDIFF(CURDATE(), last_assistance_date) > 90 THEN 'Eligible' 
+                    WHEN DATEDIFF(CURDATE(), ci.last_assistance_date) > 90 THEN 'Eligible' 
                     ELSE 'Not Eligible' 
-                END AS Eligibility
-            FROM ClientInformation
-            ORDER BY FullName";
+                END AS Eligibility FROM clientinformation as ci 
+                RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id 
+                LEFT JOIN beneficiaryfamilycomposition bfc ON bi.beneficiary_id = bfc.beneficiary_id ";
+
+           //$sql =0 @"LEFT JOIN beneficiaryinformation as bi ON ci.client_id = bi.client_id
+           // LEFT JOIN 
+           // FROM ClientInformation as ci";
+            if (role == "Social Worker")
+            {
+                query += "WHERE DATE(bfc.created_timestamp) = CURDATE() ";
+            }
+
+            //query += @"ORDER BY FullName";
+            query += @" ORDER BY bi.beneficiary_id DESC LIMIT 1";
+            
+
 
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -306,35 +320,39 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         {
             string query = @"
             SELECT 
-                client_id AS ClientID,
-                CONCAT(last_name, ' ', first_name) AS FullName,
-                contact_number AS ContactNumber,
-                last_assistance_date AS LastAssistanceDate,";
+                ci.client_id AS ClientID,
+                CONCAT(ci.last_name, ' ', ci.first_name) AS FullName,
+                ci.contact_number AS ContactNumber,
+                ci.last_assistance_date AS LastAssistanceDate,";
 
             // Add date of birth for Admin Clerk 1
             if (role == "Admin Clerk 1")
             {
-                query += "date_of_birth AS DateOfBirth,";
+                query += "ci.date_of_birth AS DateOfBirth,";
             }
 
             query += @"
                 CASE 
-                    WHEN DATEDIFF(CURDATE(), last_assistance_date) > 90 THEN 'Eligible' 
+                    WHEN DATEDIFF(CURDATE(), ci.last_assistance_date) > 90 THEN 'Eligible' 
                     ELSE 'Not Eligible' 
                 END AS Eligibility
-            FROM ClientInformation
+            FROM clientinformation as ci 
+            RIGHT JOIN beneficiaryinformation AS bi ON ci.client_id = bi.client_id 
+            LEFT JOIN beneficiaryfamilycomposition bfc ON bi.beneficiary_id = bfc.beneficiary_id  
             WHERE 
-                CONCAT(last_name, ' ', first_name) LIKE @searchTerm
-                OR contact_number LIKE @searchTerm
-                OR DATE_FORMAT(last_assistance_date, '%M') LIKE @searchTerm";
+                (CONCAT(ci.last_name, ' ', ci.first_name) LIKE @searchTerm
+                OR ci.contact_number LIKE @searchTerm
+                OR DATE_FORMAT(ci.last_assistance_date, '%M') LIKE @searchTerm)";
 
             if (role == "Admin Clerk 1")
             {
-                query += " OR DATE_FORMAT(date_of_birth, '%M %d, %Y') LIKE @searchTerm";
+                query += " OR DATE_FORMAT(ci.date_of_birth, '%M %d, %Y') LIKE @searchTerm ";
             }
-
-            query += " ORDER BY FullName";
-
+            if (role == "Social Worker")
+            {
+                query += " AND DATE(bfc.created_timestamp) = CURDATE() ";
+            }
+            query += @" ORDER BY bi.beneficiary_id DESC LIMIT 1";
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -345,7 +363,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     adapter.Fill(dt);
                     dgClient.DataSource = dt;
                     ApplyClientColorCoding();
-
+              
                     // Display "Not Found" when no data is present
                     if (dt.Rows.Count == 0)
                     {

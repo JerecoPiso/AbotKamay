@@ -49,7 +49,7 @@
             panel2 = new Panel();
             rBtnOther = new RadioButton();
             label2 = new Label();
-            button5 = new Button();
+            btnPrint = new Button();
             txtOther = new TextBox();
             label1 = new Label();
             rBtnCounselling = new RadioButton();
@@ -297,7 +297,7 @@
             panel2.BackColor = Color.White;
             panel2.Controls.Add(rBtnOther);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(button5);
+            panel2.Controls.Add(btnPrint);
             panel2.Controls.Add(txtOther);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(rBtnCounselling);
@@ -347,22 +347,23 @@
             label2.TabIndex = 240;
             label2.Text = "Mode of Financial Assistance:";
             // 
-            // button5
+            // btnPrint
             // 
-            button5.BackColor = Color.Teal;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Arial Rounded MT Bold", 9F);
-            button5.ForeColor = Color.White;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(1171, 709);
-            button5.Name = "button5";
-            button5.Size = new Size(115, 36);
-            button5.TabIndex = 248;
-            button5.Text = "   PRINT";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            btnPrint.BackColor = Color.Teal;
+            btnPrint.Enabled = false;
+            btnPrint.FlatAppearance.BorderSize = 0;
+            btnPrint.FlatStyle = FlatStyle.Flat;
+            btnPrint.Font = new Font("Arial Rounded MT Bold", 9F);
+            btnPrint.ForeColor = Color.White;
+            btnPrint.Image = (Image)resources.GetObject("btnPrint.Image");
+            btnPrint.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPrint.Location = new Point(1171, 709);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(115, 36);
+            btnPrint.TabIndex = 248;
+            btnPrint.Text = "   PRINT";
+            btnPrint.UseVisualStyleBackColor = false;
+            btnPrint.Click += button5_Click;
             // 
             // txtOther
             // 
@@ -938,7 +939,7 @@
         private TabPage tabPage2;
         private TextBox txtClientSub;
         private Panel panel2;
-        private Button button5;
+        private Button btnPrint;
         private GroupBox groupBox2;
         private TextBox txtValuePesos;
         private GroupBox groupBox4;

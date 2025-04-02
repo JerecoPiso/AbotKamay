@@ -34,17 +34,21 @@
             panel2 = new Panel();
             txtInputNum = new TextBox();
             panelQueue = new Panel();
-            lblNumInput = new Label();
             panel8 = new Panel();
             lblWaiting = new Label();
+            lblNumInput = new Label();
             panel1 = new Panel();
             label1 = new Label();
             btnAddQueue = new Button();
             btnUndo = new Button();
+            listWaiting = new ListBox();
+            panel3 = new Panel();
+            label2 = new Label();
             panel2.SuspendLayout();
             panelQueue.SuspendLayout();
             panel8.SuspendLayout();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // btnQueueDisplay
@@ -107,22 +111,9 @@
             panelQueue.ForeColor = Color.FromArgb(216, 216, 216);
             panelQueue.Location = new Point(352, 88);
             panelQueue.Name = "panelQueue";
-            panelQueue.Size = new Size(289, 304);
+            panelQueue.Size = new Size(289, 331);
             panelQueue.TabIndex = 44;
             panelQueue.UseWaitCursor = true;
-            // 
-            // lblNumInput
-            // 
-            lblNumInput.Anchor = AnchorStyles.Bottom;
-            lblNumInput.AutoSize = true;
-            lblNumInput.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNumInput.ForeColor = Color.FromArgb(47, 126, 189);
-            lblNumInput.Location = new Point(125, 131);
-            lblNumInput.Name = "lblNumInput";
-            lblNumInput.Size = new Size(42, 62);
-            lblNumInput.TabIndex = 228;
-            lblNumInput.Text = "I";
-            lblNumInput.UseWaitCursor = true;
             // 
             // panel8
             // 
@@ -146,6 +137,19 @@
             lblWaiting.TabIndex = 229;
             lblWaiting.Text = "Waiting...";
             lblWaiting.UseWaitCursor = true;
+            // 
+            // lblNumInput
+            // 
+            lblNumInput.Anchor = AnchorStyles.Bottom;
+            lblNumInput.AutoSize = true;
+            lblNumInput.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNumInput.ForeColor = Color.FromArgb(47, 126, 189);
+            lblNumInput.Location = new Point(125, 158);
+            lblNumInput.Name = "lblNumInput";
+            lblNumInput.Size = new Size(42, 62);
+            lblNumInput.TabIndex = 228;
+            lblNumInput.Text = "I";
+            lblNumInput.UseWaitCursor = true;
             // 
             // panel1
             // 
@@ -206,11 +210,47 @@
             btnUndo.UseWaitCursor = true;
             btnUndo.Click += btnUndo_Click;
             // 
+            // listWaiting
+            // 
+            listWaiting.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            listWaiting.ForeColor = Color.FromArgb(47, 126, 189);
+            listWaiting.FormattingEnabled = true;
+            listWaiting.ItemHeight = 45;
+            listWaiting.Location = new Point(674, 145);
+            listWaiting.Name = "listWaiting";
+            listWaiting.Size = new Size(345, 274);
+            listWaiting.TabIndex = 258;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(47, 126, 189);
+            panel3.Controls.Add(label2);
+            panel3.Location = new Point(674, 89);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(345, 56);
+            panel3.TabIndex = 259;
+            panel3.UseWaitCursor = true;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Bottom;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(82, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(211, 41);
+            label2.TabIndex = 229;
+            label2.Text = "Waiting List...";
+            label2.UseWaitCursor = true;
+            // 
             // InputQueueForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(678, 434);
+            ClientSize = new Size(1054, 434);
+            Controls.Add(panel3);
+            Controls.Add(listWaiting);
             Controls.Add(btnUndo);
             Controls.Add(btnQueueDisplay);
             Controls.Add(btnAddQueue);
@@ -228,6 +268,8 @@
             panel8.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -245,5 +287,8 @@
         private Label label1;
         private Button btnAddQueue;
         private Button btnUndo;
+        private ListBox listWaiting;
+        private Panel panel3;
+        private Label label2;
     }
 }

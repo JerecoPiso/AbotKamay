@@ -29,8 +29,8 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
                 //conn.Open();
-
-                string query = "SELECT queue_number FROM Queue WHERE step = @step AND status = 'Serving' ORDER BY queue_number ASC LIMIT 1";
+               
+                string query = "SELECT queue_number FROM Queue WHERE step = @step AND status = '"+(StepNumber == 3 ? "Waiting" : "Completed") +"' AND hold = 0 AND done = 0 ORDER BY queue_number ASC LIMIT 1";
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@step", StepNumber);
@@ -45,6 +45,16 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     {
                         lblNumThree.Text = result.ToString();
                     }
+                }
+                if (!lblNumThree.Text.Equals("-"))
+                {
+                    string updateQuery = "UPDATE Queue SET status = 'Serving', hold = 1 WHERE queue_number = @queue_number AND status = '"+(StepNumber == 3 ? "Waiting" : "Completed") +"' ORDER BY queue_number ASC LIMIT 1";
+                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn))
+                    {
+                        updateCmd.Parameters.AddWithValue("@queue_number", Int32.Parse(lblNumThree.Text));
+                        updateCmd.ExecuteNonQuery();
+                    }
+
                 }
             }
         }
@@ -61,16 +71,33 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
 
-                // 1️⃣ Mark the current "Serving" number as "Completed"
-                string completeQuery = "UPDATE Queue SET status = 'Completed' WHERE step = @step AND status = 'Serving' ORDER BY queue_number ASC LIMIT 1";
-                using (MySqlCommand completeCmd = new MySqlCommand(completeQuery, conn))
+                if (!lblNumThree.Text.Equals("-"))
                 {
-                    completeCmd.Parameters.AddWithValue("@step", StepNumber);
-                    completeCmd.ExecuteNonQuery();
+                    string completeQuery = "";
+                    // 1️⃣ Mark the current "Serving" number as "Completed"
+                    if (StepNumber == 5)
+                    {
+                         completeQuery = "UPDATE Queue SET status = 'Completed', hold = 0, done = 1 +, step = step + 1 WHERE queue_number = @queue_number AND done = 0 AND status = 'Serving' ORDER BY queue_number ASC LIMIT 1";
+                         using (MySqlCommand completeCmd = new MySqlCommand(completeQuery, conn))
+                         {  completeCmd.Parameters.AddWithValue("@queue_number", Int32.Parse(lblNumThree.Text));
+                            completeCmd.ExecuteNonQuery();
+                         }
+                    }
+                    else
+                    {
+                        completeQuery = "UPDATE Queue SET status = 'Completed', hold = 0, step = step + 1 WHERE queue_number = @queue_number AND status = 'Serving' ORDER BY queue_number ASC LIMIT 1";
+                        using (MySqlCommand completeCmd = new MySqlCommand(completeQuery, conn))
+                        {
+                            completeCmd.Parameters.AddWithValue("@queue_number", Int32.Parse(lblNumThree.Text));
+                            completeCmd.ExecuteNonQuery();
+                        }
+                    }
+                  
                 }
+               
 
                 // 2️⃣ Move the next "Waiting" queue number to "Serving"
-                string updateQuery = "UPDATE Queue SET status = 'Serving' WHERE step = @step AND status = 'Waiting' ORDER BY queue_number ASC LIMIT 1";
+                string updateQuery = "UPDATE Queue SET status = 'Serving', hold = 1 WHERE step = @step AND status = '"+(StepNumber == 3 ? "Waiting" : "Completed") +"' ORDER BY queue_number ASC LIMIT 1";
                 using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn))
                 {
                     updateCmd.Parameters.AddWithValue("@step", StepNumber);
@@ -96,14 +123,16 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = DatabaseConnection.GetConnection())
+            if (!lblNumThree.Text.Equals("-"))
             {
-                string updateQuery = "UPDATE Queue SET step = step - 1 WHERE step = @step AND status = 'Waiting' ORDER BY queue_number DESC LIMIT 1";
-                MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
-                cmd.Parameters.AddWithValue("@step", StepNumber);
-                cmd.ExecuteNonQuery();
+                using (MySqlConnection conn = DatabaseConnection.GetConnection())
+                {
+                    string updateQuery = "UPDATE Queue SET step = step - 1 WHERE queue_number = @queue_number AND status = '" + (StepNumber == 3 ? "Waiting" : "Completed") + "' ORDER BY queue_number DESC LIMIT 1";
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@step", Int32.Parse(lblNumThree.Text));
+                    cmd.ExecuteNonQuery();
+                }
             }
-
             LoadQueue();
 
             if (Application.OpenForms["QueueForm"] is QueueForm queueForm)
@@ -111,9 +140,5 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 queueForm.UpdateQueueNumbers();
             }
         }
-
-
-
-
     }
 }

@@ -61,7 +61,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void Step4Form_Load(object sender, EventArgs e)
         {
-            button5.PerformClick();
+            btnPrint.PerformClick();
             timeDateTimer.Start();
         }
 
@@ -171,7 +171,24 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                         cmd.ExecuteNonQuery();
                     }
                     btnStep4Save.Enabled = false;
-                    MessageBox.Show("Assistance information and Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnPrint.Enabled = true;
+
+                    string sql = "UPDATE clientinformation SET last_assistance_date = @lad WHERE client_id = @client_id";
+              
+
+
+                    using (MySqlConnection conn = DatabaseConnection.GetConnection())
+                    {
+                        MySqlCommand command = new MySqlCommand(sql, conn);
+
+                        // Ensure parameters are added in the correct order as per SQL query
+                        command.Parameters.AddWithValue("@lad", DateTime.Now.ToString("yyyy-MM-dd"));
+                        command.Parameters.AddWithValue("@client_id", clientId);
+                        command.ExecuteNonQuery();
+                    }
+                
+             
+                MessageBox.Show("Assistance information and Assessment saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Please print now all the 3 forms", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //MainForm main = (MainForm)Application.OpenForms["MainForm"];
                     //main.btnHome.PerformClick();
@@ -421,6 +438,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             {
                 PrintGeneralntakeSheet pis = new PrintGeneralntakeSheet(this);
                 pis.Show();
+                pis.BringToFront();
             }
 
         }
@@ -431,6 +449,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             {
                 CertificateOfEligibility coe = new CertificateOfEligibility(this);
                 coe.Show();
+                coe.BringToFront();
             }
 
         }
@@ -441,6 +460,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             {
                 ReimbursementExpenseReceipt rer = new ReimbursementExpenseReceipt(this);
                 rer.Show();
+                rer.BringToFront();
             }
         }
 
