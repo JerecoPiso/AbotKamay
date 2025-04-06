@@ -42,7 +42,8 @@
             addUserToolStripMenuItem = new ToolStripMenuItem();
             recordToolStripMenuItem = new ToolStripMenuItem();
             viewToolStripMenuItem = new ToolStripMenuItem();
-            createToolStripMenuItem = new ToolStripMenuItem();
+            sUMMToolStripMenuItem = new ToolStripMenuItem();
+            picturesToolStripMenuItem = new ToolStripMenuItem();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnHome = new Button();
             btnQueue = new Button();
@@ -175,7 +176,7 @@
             // 
             // recordToolStripMenuItem
             // 
-            recordToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { viewToolStripMenuItem, createToolStripMenuItem });
+            recordToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { viewToolStripMenuItem, sUMMToolStripMenuItem, picturesToolStripMenuItem });
             recordToolStripMenuItem.Name = "recordToolStripMenuItem";
             recordToolStripMenuItem.Size = new Size(93, 29);
             recordToolStripMenuItem.Text = "Report";
@@ -183,15 +184,24 @@
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new Size(224, 30);
-            viewToolStripMenuItem.Text = "View";
+            viewToolStripMenuItem.Size = new Size(425, 30);
+            viewToolStripMenuItem.Text = "Generate";
+            viewToolStripMenuItem.Visible = false;
+            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
             // 
-            // createToolStripMenuItem
+            // sUMMToolStripMenuItem
             // 
-            createToolStripMenuItem.Name = "createToolStripMenuItem";
-            createToolStripMenuItem.Size = new Size(224, 30);
-            createToolStripMenuItem.Text = "Create";
-            createToolStripMenuItem.Click += createToolStripMenuItem_Click;
+            sUMMToolStripMenuItem.Name = "sUMMToolStripMenuItem";
+            sUMMToolStripMenuItem.Size = new Size(425, 30);
+            sUMMToolStripMenuItem.Text = "Summary Disbursement of AICS";
+            sUMMToolStripMenuItem.Click += sUMMToolStripMenuItem_Click;
+            // 
+            // picturesToolStripMenuItem
+            // 
+            picturesToolStripMenuItem.Name = "picturesToolStripMenuItem";
+            picturesToolStripMenuItem.Size = new Size(425, 30);
+            picturesToolStripMenuItem.Text = "Pictures";
+            picturesToolStripMenuItem.Click += picturesToolStripMenuItem_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -450,8 +460,9 @@
         private ToolStripMenuItem addUserToolStripMenuItem;
         private ToolStripMenuItem recordToolStripMenuItem;
         private ToolStripMenuItem viewToolStripMenuItem;
-        private ToolStripMenuItem createToolStripMenuItem;
         public Button btnHome;
         private Button button1;
+        private ToolStripMenuItem sUMMToolStripMenuItem;
+        private ToolStripMenuItem picturesToolStripMenuItem;
     }
 }

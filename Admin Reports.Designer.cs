@@ -296,7 +296,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1531, 925);
+            ClientSize = new Size(1093, 750);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ReportsForm";

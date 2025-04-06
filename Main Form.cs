@@ -23,7 +23,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private Button lastClickedButton;
         private static bool isQueueRunning = false;  // Static flag to track if the queue has started
         private string userName;
-
+        ReportsForm reportForms = new ReportsForm();
         public MainForm(string userRole = null, string firstName = null)
         {
             InitializeComponent();
@@ -210,14 +210,14 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             // ✅ Check if QueueForm is open, if not, open it automatically
             //if (!HomeForm.isQueueFormOpen)
             //{
-               
+
             //    QueueForm queueForm = new QueueForm();
             //    queueForm.Show();
             //    HomeForm.isQueueFormOpen = true; // Mark it as open
             //    System.Threading.Thread.Sleep(500); // Delay for smooth UI transition
             //}
 
-           // If QueueForm is open, check if the queue is already running
+            // If QueueForm is open, check if the queue is already running
             if (!isQueueRunning)
             {
                 DialogResult result = MessageBox.Show("Do you want to start the queue?", "Start Queue", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -322,6 +322,30 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            reportForms.TopLevel = false;
+            mainPanel.Controls.Add(reportForms);
+            // addUserForm.Dock = DockStyle.Fill;
+            reportForms.Location = new Point((mainPanel.Width - reportForms.Width) / 2, (mainPanel.Height - reportForms.Height) / 2);
+            reportForms.Show(); // Use ShowDialog for a modal window
+        }
+
+        private void sUMMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SummaryDisbursementOfAICS summary = new SummaryDisbursementOfAICS();
+            summary.clientId = selectedClientId;
+            summary.Show();
+        }
+
+        private void picturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pictures pic = new Pictures();
+            pic.Show();
         }
     }
 }

@@ -215,6 +215,8 @@
             dgUsers.AllowUserToAddRows = false;
             dgUsers.AllowUserToDeleteRows = false;
             dgUsers.AllowUserToOrderColumns = true;
+            dgUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgUsers.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgUsers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -238,7 +240,7 @@
             dgUsers.Name = "dgUsers";
             dgUsers.ReadOnly = true;
             dgUsers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgUsers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgUsers.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             dgUsers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgUsers.Size = new Size(743, 358);
             dgUsers.TabIndex = 0;

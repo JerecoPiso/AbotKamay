@@ -12,6 +12,8 @@ using System.IO;
 using AForge.Video;
 using AForge.Video.DirectShow;
 using System.Drawing.Imaging;
+using Abot_Kamay_Tracking_and_Queuing_System.Utilities;
+using MySql.Data.MySqlClient;
 
 namespace Abot_Kamay_Tracking_and_Queuing_System
 {
@@ -181,6 +183,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                 if (result == DialogResult.Yes)
                 {
                     SaveCapturedImage();
+                  
                 }
                 else
                 {
@@ -205,7 +208,19 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
             // Save the captured image as a .jpg file
             capturedImage.Save(fileName, ImageFormat.Jpeg);
-
+            using (MySqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                string q = @"INSERT INTO disbursementinformation (client_id, client_name, address, filepath, last_assistance_date) VALUES (@client_id, @client_name, @address, @filepath, @last_assistance_date);";
+                using (MySqlCommand cmd = new MySqlCommand(q, conn))
+                {
+                    cmd.Parameters.AddWithValue("@client_id", clientId);
+                    cmd.Parameters.AddWithValue("@client_name", fullName);
+                    cmd.Parameters.AddWithValue("@address", "");
+                    cmd.Parameters.AddWithValue("@filepath", fileName);
+                    cmd.Parameters.AddWithValue("last_assistance_date", DateTime.Now.ToString("yyyy-MM-dd"));
+                    cmd.ExecuteNonQuery();
+                }
+            }
             // Show a message that the image has been saved
             MessageBox.Show($"Image saved as: {fileName}", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
