@@ -28,7 +28,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
             List<string> clientNames = new List<string>();
 
             int cols = 2;
-            float imageWidth = 200f;
+            float imageWidth = 250f;
             
             using (MySqlConnection conn = DatabaseConnection.GetConnection())
             {
