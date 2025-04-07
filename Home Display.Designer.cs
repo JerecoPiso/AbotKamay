@@ -61,11 +61,12 @@
             mainPanel.Controls.Add(dgBenef);
             mainPanel.Controls.Add(pictureBox2);
             mainPanel.Controls.Add(txtSearch);
-            mainPanel.Font = new Font("Arial Rounded MT Bold", 18F);
+            mainPanel.Font = new Font("Microsoft Sans Serif", 18F);
             mainPanel.ForeColor = SystemColors.ControlText;
             mainPanel.Location = new Point(0, 0);
+            mainPanel.Margin = new Padding(3, 2, 3, 2);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1531, 926);
+            mainPanel.Size = new Size(1340, 694);
             mainPanel.TabIndex = 7;
             mainPanel.Paint += mainPanel_Paint;
             // 
@@ -75,9 +76,10 @@
             flowLayoutPanel1.Controls.Add(btnRefresh);
             flowLayoutPanel1.Controls.Add(btnAddNew);
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(1171, 95);
+            flowLayoutPanel1.Location = new Point(948, 73);
+            flowLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(289, 44);
+            flowLayoutPanel1.Size = new Size(253, 33);
             flowLayoutPanel1.TabIndex = 256;
             // 
             // btnRefresh
@@ -85,13 +87,14 @@
             btnRefresh.BackColor = Color.FromArgb(0, 99, 177);
             btnRefresh.FlatAppearance.BorderSize = 0;
             btnRefresh.FlatStyle = FlatStyle.Flat;
-            btnRefresh.Font = new Font("Arial Rounded MT Bold", 9F);
+            btnRefresh.Font = new Font("Microsoft Sans Serif", 9F);
             btnRefresh.ForeColor = Color.White;
             btnRefresh.Image = (Image)resources.GetObject("btnRefresh.Image");
             btnRefresh.ImageAlign = ContentAlignment.MiddleRight;
-            btnRefresh.Location = new Point(153, 3);
+            btnRefresh.Location = new Point(134, 2);
+            btnRefresh.Margin = new Padding(3, 2, 3, 2);
             btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(133, 40);
+            btnRefresh.Size = new Size(116, 30);
             btnRefresh.TabIndex = 256;
             btnRefresh.Text = "REFRESH  ";
             btnRefresh.UseVisualStyleBackColor = false;
@@ -103,13 +106,14 @@
             btnAddNew.BackColor = Color.FromArgb(0, 99, 177);
             btnAddNew.FlatAppearance.BorderSize = 0;
             btnAddNew.FlatStyle = FlatStyle.Flat;
-            btnAddNew.Font = new Font("Arial Rounded MT Bold", 9F);
+            btnAddNew.Font = new Font("Microsoft Sans Serif", 9F);
             btnAddNew.ForeColor = Color.White;
             btnAddNew.Image = (Image)resources.GetObject("btnAddNew.Image");
             btnAddNew.ImageAlign = ContentAlignment.MiddleRight;
-            btnAddNew.Location = new Point(14, 3);
+            btnAddNew.Location = new Point(12, 2);
+            btnAddNew.Margin = new Padding(3, 2, 3, 2);
             btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(133, 40);
+            btnAddNew.Size = new Size(116, 30);
             btnAddNew.TabIndex = 255;
             btnAddNew.Text = "ADD NEW  ";
             btnAddNew.UseVisualStyleBackColor = false;
@@ -122,9 +126,9 @@
             lblClient.BackColor = Color.Transparent;
             lblClient.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblClient.ForeColor = Color.FromArgb(64, 64, 64);
-            lblClient.Location = new Point(76, 119);
+            lblClient.Location = new Point(66, 89);
             lblClient.Name = "lblClient";
-            lblClient.Size = new Size(84, 20);
+            lblClient.Size = new Size(69, 17);
             lblClient.TabIndex = 249;
             lblClient.Text = "CLIENTS:";
             // 
@@ -134,9 +138,9 @@
             lblBenef.BackColor = Color.Transparent;
             lblBenef.Font = new Font("Microsoft Sans Serif", 10.2F);
             lblBenef.ForeColor = Color.FromArgb(64, 64, 64);
-            lblBenef.Location = new Point(76, 520);
+            lblBenef.Location = new Point(66, 390);
             lblBenef.Name = "lblBenef";
-            lblBenef.Size = new Size(139, 20);
+            lblBenef.Size = new Size(112, 17);
             lblBenef.TabIndex = 248;
             lblBenef.Text = "BENEFICIARIES:";
             // 
@@ -167,14 +171,15 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgClient.DefaultCellStyle = dataGridViewCellStyle2;
-            dgClient.Location = new Point(74, 152);
+            dgClient.Location = new Point(65, 114);
+            dgClient.Margin = new Padding(3, 2, 3, 2);
             dgClient.MultiSelect = false;
             dgClient.Name = "dgClient";
             dgClient.ReadOnly = true;
             dgClient.RowHeadersWidth = 51;
             dgClient.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgClient.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgClient.Size = new Size(1386, 351);
+            dgClient.Size = new Size(1136, 263);
             dgClient.TabIndex = 247;
             dgClient.CellClick += dgClient_CellClick;
             dgClient.CellContentClick += dgClient_CellContentClick;
@@ -207,14 +212,15 @@
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgBenef.DefaultCellStyle = dataGridViewCellStyle4;
-            dgBenef.Location = new Point(76, 552);
+            dgBenef.Location = new Point(66, 414);
+            dgBenef.Margin = new Padding(3, 2, 3, 2);
             dgBenef.MultiSelect = false;
             dgBenef.Name = "dgBenef";
             dgBenef.ReadOnly = true;
             dgBenef.RowHeadersWidth = 51;
             dgBenef.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgBenef.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgBenef.Size = new Size(1386, 309);
+            dgBenef.Size = new Size(1136, 232);
             dgBenef.TabIndex = 246;
             dgBenef.CellClick += dgBenef_CellClick;
             dgBenef.CellContentClick += dgBenef_CellContentClick;
@@ -224,7 +230,8 @@
             // 
             pictureBox2.BackColor = SystemColors.Window;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(977, 68);
+            pictureBox2.Location = new Point(855, 51);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 32);
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -234,20 +241,22 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Verdana", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(539, 64);
+            txtSearch.Location = new Point(472, 48);
+            txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(475, 42);
+            txtSearch.Size = new Size(416, 32);
             txtSearch.TabIndex = 20;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // HomeForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1531, 926);
+            ClientSize = new Size(1213, 591);
             Controls.Add(mainPanel);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "HomeForm";
             StartPosition = FormStartPosition.CenterScreen;
             Load += HomeForm_Load;

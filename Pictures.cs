@@ -16,7 +16,7 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CsvReports", DateTime.Now.ToString("yyyy-MM-dd"));
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "CsvPictures", DateTime.Now.ToString("yyyy-MM-dd"));
             Directory.CreateDirectory(folderPath);
 
             // Generate a filename based on the current timestamp
@@ -37,7 +37,11 @@ namespace Abot_Kamay_Tracking_and_Queuing_System
                     cmd.Parameters.AddWithValue("@date_to", date_to.Value.ToString("yyyy-MM-dd"));
                     using (MySqlDataReader rd = cmd.ExecuteReader())
                     {
-                        imagePaths.Add(rd["filepath"].ToString());
+                        while (rd.Read())
+                        {
+                            imagePaths.Add(rd["filepath"].ToString());
+                        }
+                     
                         // Create a directory based on the current date (if it doesn't exist)
                       
                     }
